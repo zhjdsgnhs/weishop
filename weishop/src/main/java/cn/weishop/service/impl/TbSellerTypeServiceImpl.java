@@ -43,4 +43,9 @@ public class TbSellerTypeServiceImpl implements ITbSellerTypeService {
 		return false;
 	}
 
+	@Override
+	public TbSellerType selectSellerId(int sTypeid) {
+		return tbSellerTypeMapper.selectSellerId(sTypeid);
+	}
+
 }
