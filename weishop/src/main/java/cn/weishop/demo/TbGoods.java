@@ -18,22 +18,16 @@ import lombok.experimental.Accessors;
  * @since 2018-12-28
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
-public class TbGoods implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * 主键
-     */
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+public class TbGoods{
+    private int id;
 
     /**
      * 商家ID
      */
-    private Integer sellerId;
+    private int sellerId;
+    private String sellerName;
+    
 
     /**
      * SPU名
@@ -48,17 +42,20 @@ public class TbGoods implements Serializable {
     /**
      * 在售状态
      */
-    private Integer statusId;
+    private int status_id;
+    private String statusName;
 
     /**
      * 是否是促销商品
      */
-    private Integer promotionId;
+    private int promotion_id;
+    private String proName;
 
     /**
      * 品牌
      */
-    private Long brandId;
+    private int brandId;
+    private String brandName;
 
     /**
      * 副标题
@@ -68,17 +65,20 @@ public class TbGoods implements Serializable {
     /**
      * 一级类目
      */
-    private Long category1Id;
+    private int category1Id;
+    private String category1IdName;
 
     /**
      * 二级类目
      */
-    private Long category2Id;
+    private int category2Id;
+    private String category2IdName;
 
     /**
      * 三级类目
      */
-    private Long category3Id;
+    private int category3Id;
+    private String category3IdName;
 
     /**
      * 小图
@@ -109,23 +109,26 @@ public class TbGoods implements Serializable {
      * 销量
      */
     private Integer sales;
-
-    @TableField("userId")
+    
     private Integer userId;
+    private String username;
+    
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public Integer getSellerId() {
+	
+
+	public int getSellerId() {
 		return sellerId;
 	}
 
-	public void setSellerId(Integer sellerId) {
+	public void setSellerId(int sellerId) {
 		this.sellerId = sellerId;
 	}
 
@@ -145,27 +148,27 @@ public class TbGoods implements Serializable {
 		this.sellerUnit = sellerUnit;
 	}
 
-	public Integer getStatusId() {
-		return statusId;
+	public int getStatus_id() {
+		return status_id;
 	}
 
-	public void setStatusId(Integer statusId) {
-		this.statusId = statusId;
+	public void setStatus_id(int status_id) {
+		this.status_id = status_id;
 	}
 
-	public Integer getPromotionId() {
-		return promotionId;
+	public int getPromotion_id() {
+		return promotion_id;
 	}
 
-	public void setPromotionId(Integer promotionId) {
-		this.promotionId = promotionId;
+	public void setPromotion_id(int promotion_id) {
+		this.promotion_id = promotion_id;
 	}
 
-	public Long getBrandId() {
+	public int getBrandId() {
 		return brandId;
 	}
 
-	public void setBrandId(Long brandId) {
+	public void setBrandId(int brandId) {
 		this.brandId = brandId;
 	}
 
@@ -177,27 +180,27 @@ public class TbGoods implements Serializable {
 		this.caption = caption;
 	}
 
-	public Long getCategory1Id() {
+	public int getCategory1Id() {
 		return category1Id;
 	}
 
-	public void setCategory1Id(Long category1Id) {
+	public void setCategory1Id(int category1Id) {
 		this.category1Id = category1Id;
 	}
 
-	public Long getCategory2Id() {
+	public int getCategory2Id() {
 		return category2Id;
 	}
 
-	public void setCategory2Id(Long category2Id) {
+	public void setCategory2Id(int category2Id) {
 		this.category2Id = category2Id;
 	}
 
-	public Long getCategory3Id() {
+	public int getCategory3Id() {
 		return category3Id;
 	}
 
-	public void setCategory3Id(Long category3Id) {
+	public void setCategory3Id(int category3Id) {
 		this.category3Id = category3Id;
 	}
 
@@ -257,5 +260,68 @@ public class TbGoods implements Serializable {
 		this.userId = userId;
 	}
 
-    
+	public String getStatusName() {
+		return statusName;
+	}
+
+	public void setStatusName(String statusName) {
+		this.statusName = statusName;
+	}
+
+	public String getProName() {
+		return proName;
+	}
+
+	public void setProName(String proName) {
+		this.proName = proName;
+	}
+
+	public String getBrandName() {
+		return brandName;
+	}
+
+	public void setBrandName(String brandName) {
+		this.brandName = brandName;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getSellerName() {
+		return sellerName;
+	}
+
+	public void setSellerName(String sellerName) {
+		this.sellerName = sellerName;
+	}
+
+	public String getCategory1IdName() {
+		return category1IdName;
+	}
+
+	public void setCategory1IdName(String category1IdName) {
+		this.category1IdName = category1IdName;
+	}
+
+	public String getCategory2IdName() {
+		return category2IdName;
+	}
+
+	public void setCategory2IdName(String category2IdName) {
+		this.category2IdName = category2IdName;
+	}
+
+	public String getCategory3IdName() {
+		return category3IdName;
+	}
+
+	public void setCategory3IdName(String category3IdName) {
+		this.category3IdName = category3IdName;
+	}
+	
 }
