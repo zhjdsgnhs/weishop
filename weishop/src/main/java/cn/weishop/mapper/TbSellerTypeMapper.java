@@ -1,6 +1,11 @@
 package cn.weishop.mapper;
 
 import cn.weishop.demo.TbSellerType;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +16,9 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author jeddden
  * @since 2018-12-28
  */
-public interface TbSellerTypeMapper extends BaseMapper<TbSellerType> {
+@Mapper
+public interface TbSellerTypeMapper extends BaseMapper<TbSellerType>{
+	public List<TbSellerType> selectSeller();
+	public int updateSellerType(TbSellerType tbSellerType);
 
 }

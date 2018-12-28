@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -69,7 +70,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			                          </tr>
 			                      </thead>
 			                      <tbody>
-			                          <tr>
+			                      <c:forEach items="${typeList}" var="book">
+       <tr>
+         <td>${book.sType}</td>
+         <td>${book.sPercent}</td>
+         <td>${book.statusName}</td>
+       </tr>
+       </c:forEach>
+			                          <!-- <tr>
 			                              <td><input  type="checkbox"></td>			                              
 				                          <td>1</td>
 									      <td>梦琪琪商贸有限公司</td>
@@ -99,7 +107,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                                  <td class="text-center">                                           
 		                                 	  <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#sellerModal" >详情</button>                                           
 		                                  </td>
-			                          </tr>
+			                          </tr> -->
 			                      </tbody>
 			                  </table>
 			                  <!--数据列表/-->                        

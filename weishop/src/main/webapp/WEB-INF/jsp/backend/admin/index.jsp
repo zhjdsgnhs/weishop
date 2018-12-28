@@ -333,7 +333,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				                </a>
 				            </li>
 							<li id="admin-login">
-				                <a href="${pageContext.request.contextPath }/WEB-INF/jsp/backend/admin/seller.jsp" target="iframe">
+				                <a href="selectSellerType" target="iframe">
 				                    <i class="fa fa-circle-o"></i>商家管理
 				                </a>
 				            </li>

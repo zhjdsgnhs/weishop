@@ -16,4 +16,7 @@ spring:
     
   application:
     name: spring-boot-redis
-  
+
+mybatis-plus:
+  mapper-locations:
+    classpath:mapper/*Mapper.xml
