@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.weishop.mapper.TbGoodsMapper">
+<resultMap type="cn.weishop.demo.TbGoods" id="lists">
+  <result property="statusName" column="status_name"/>
+  <result property="proName" column="promotion_id"/>
+  <result property="brandName" column="brand_id"/>
+  <result property="category1IdName" column="category1IdName"/>
+  <result property="category1IdName" column="category2IdName"/>
+  <result property="category1IdName" column="category3IdName"/>
+  <result property="username" column="username"/>
 
+</resultMap>
+
+   <select id="selectAll" resultMap="lists">
+       SELECT *,c.name AS category1IdName,c1.name AS category2IdName,
+		c2.name AS category3IdName FROM tb_goods g
+		LEFT JOIN tb_brand b ON b.id=g.brand_id
+		LEFT JOIN tb_goods_promotion p ON p.promotion_id=g.promotion_id
+		LEFT JOIN tb_goods_status s ON s.status_id=g.status_id
+		LEFT JOIN tb_item_cat c ON c.id = g.category1_id
+		LEFT JOIN tb_item_cat c1 ON c1.id = g.category2_id
+		LEFT JOIN tb_item_cat c2 ON c2.id = g.category3_id
+		LEFT JOIN tb_seller se ON se.seller_id = g.seller_id
+		
+		
+		
+   </select>
 </mapper>

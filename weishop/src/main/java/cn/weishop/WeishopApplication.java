@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("cn.Weishop.Mapper")
+@MapperScan("cn.weishop.mapper")
 public class WeishopApplication {
 	
 	public static void main(String[] args) throws Exception {

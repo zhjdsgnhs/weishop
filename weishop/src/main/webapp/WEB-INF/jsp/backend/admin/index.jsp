@@ -365,7 +365,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				                </a>
 				            </li>
 							<li id="admin-login">
-				                <a href="${pageContext.request.contextPath }/WEB-INF/jsp/backend/admin/item_cat.jsp" target="iframe">
+				                <a href="${pageContext.request.contextPath }/selectAllParentId" target="iframe">
 				                    <i class="fa fa-circle-o"></i>分类管理
 				                </a>
 				            </li>
