@@ -18,14 +18,15 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface TbItemCatMapper{
 	   List<TbItemCat> selectAllParentId(@Param("currNo") int currNo,@Param("currSize") int currSize);
-	   List<TbItemCat> selectParentId1();
-	   List<TbItemCat> selectParentId2(@Param("parentId") int parentId);
-	   List<TbItemCat> selectParentId3(@Param("parentId") int parentId);
+	   
 	   int add(TbItemCat item);
 	   int update(TbItemCat item);
-	   TbItemCat selectId(@Param("id") int id);
+	   TbItemCat selectCatId(@Param("id") int id);
 	   int delete(@Param("id") int id);
 	   int count();
-	   
-	   List<TbItemCat> SelectTypeId1(@Param("type_id") int type_id);
+	   List<TbItemCat> SelectTypeId1();
+	   List<TbItemCat> SelectTypeId2(@Param("parentId") int parentId);
+	   List<TbItemCat> SelectTypeId3(@Param("parentId") int parentId);
+	   List<TbItemCat> selectIds(@Param("id") int id);
+	   List<TbItemCat> SelectAllTypeId2();
 }

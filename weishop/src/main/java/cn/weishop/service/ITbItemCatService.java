@@ -18,13 +18,14 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ITbItemCatService{
 	   List<TbItemCat> selectAllParentId(int currNo,int currSize);
-	   List<TbItemCat> selectParentId1();
-	   List<TbItemCat> selectParentId2(@Param("parentId") int parentId);
-	   List<TbItemCat> selectParentId3(@Param("parentId") int parentId);
+	   int count();
 	   boolean add(TbItemCat item);
 	   boolean update(TbItemCat item);
-	   TbItemCat selectId(@Param("id") int id);
-	   boolean delete(@Param("id") int id);
-	   int count();
-	   List<TbItemCat> SelectTypeId1(int type_id);//查询分类页面数据
+	   TbItemCat selectCatId(int id);
+	   boolean delete(int id);
+	   List<TbItemCat> SelectTypeId1();//查询1分类页面数据
+	   List<TbItemCat> SelectTypeId2(int parentId);
+	   List<TbItemCat> SelectTypeId3(int parentId);
+	   List<TbItemCat> selectIds(int id);
+	   List<TbItemCat> SelectAllTypeId2();
 }

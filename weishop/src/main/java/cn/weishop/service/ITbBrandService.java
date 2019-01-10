@@ -1,6 +1,9 @@
 package cn.weishop.service;
 
 import cn.weishop.demo.TbBrand;
+
+import java.util.List;
+
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +14,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author jeddden
  * @since 2018-12-28
  */
-public interface ITbBrandService extends IService<TbBrand> {
-
+public interface ITbBrandService{
+	List<TbBrand> selectBrand();
 }

@@ -1,11 +1,8 @@
 package cn.weishop.demo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import java.io.Serializable;
+import java.util.List;
+
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
 
 /**
  * <p>
@@ -40,6 +37,8 @@ public class TbItemCat {
      */
     private int typeId;
     private String typeName;
+    
+   
 
 	public int getId() {
 		return id;
@@ -85,7 +84,6 @@ public class TbItemCat {
 		default:
 			break;
 		}
-		
 	}
 
 	public String getTypeName() {
@@ -96,6 +94,7 @@ public class TbItemCat {
 		this.typeName = typeName;
 	}
 
+	
      
    
 }

@@ -1,6 +1,8 @@
 package cn.weishop.demo;
 
 import java.math.BigDecimal;
+import java.util.List;
+
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -42,13 +44,13 @@ public class TbGoods{
     /**
      * 在售状态
      */
-    private int status_id;
+    private int statusId;
     private String statusName;
 
     /**
      * 是否是促销商品
      */
-    private int promotion_id;
+    private int promotionId;
     private String proName;
 
     /**
@@ -103,7 +105,7 @@ public class TbGoods{
     /**
      * 款号
      */
-    private Integer stylenumber;
+    private String stylenumber;
 
     /**
      * 销量
@@ -112,6 +114,8 @@ public class TbGoods{
     
     private Integer userId;
     private String username;
+    
+    private List<TbGoods> goods;
     
 
 	public int getId() {
@@ -148,20 +152,22 @@ public class TbGoods{
 		this.sellerUnit = sellerUnit;
 	}
 
-	public int getStatus_id() {
-		return status_id;
+	
+
+	public int getStatusId() {
+		return statusId;
 	}
 
-	public void setStatus_id(int status_id) {
-		this.status_id = status_id;
+	public void setStatusId(int statusId) {
+		this.statusId = statusId;
 	}
 
-	public int getPromotion_id() {
-		return promotion_id;
+	public int getPromotionId() {
+		return promotionId;
 	}
 
-	public void setPromotion_id(int promotion_id) {
-		this.promotion_id = promotion_id;
+	public void setPromotionId(int promotionId) {
+		this.promotionId = promotionId;
 	}
 
 	public int getBrandId() {
@@ -236,11 +242,11 @@ public class TbGoods{
 		this.stock = stock;
 	}
 
-	public Integer getStylenumber() {
+	public String getStylenumber() {
 		return stylenumber;
 	}
 
-	public void setStylenumber(Integer stylenumber) {
+	public void setStylenumber(String stylenumber) {
 		this.stylenumber = stylenumber;
 	}
 
@@ -323,5 +329,15 @@ public class TbGoods{
 	public void setCategory3IdName(String category3IdName) {
 		this.category3IdName = category3IdName;
 	}
+
+	public List<TbGoods> getGoods() {
+		return goods;
+	}
+
+	public void setGoods(List<TbGoods> goods) {
+		this.goods = goods;
+	}
+	
+	
 	
 }

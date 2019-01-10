@@ -1,7 +1,7 @@
 package cn.weishop.mapper;
 
 import cn.weishop.demo.TbGoodsPromotion;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import java.util.List;
 
 /**
  * <p>
@@ -11,6 +11,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author jeddden
  * @since 2018-12-28
  */
-public interface TbGoodsPromotionMapper extends BaseMapper<TbGoodsPromotion> {
+public interface TbGoodsPromotionMapper{
+
+	List<TbGoodsPromotion> selectPromotion();
 
 }

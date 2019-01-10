@@ -1,7 +1,8 @@
 package cn.weishop.mapper;
 
+import java.util.List;
+
 import cn.weishop.demo.TbGoodsStatus;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
  * <p>
@@ -11,6 +12,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author jeddden
  * @since 2018-12-28
  */
-public interface TbGoodsStatusMapper extends BaseMapper<TbGoodsStatus> {
-
+public interface TbGoodsStatusMapper{
+   List<TbGoodsStatus> selectStatus();
 }

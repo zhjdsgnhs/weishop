@@ -370,8 +370,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				                </a>
 				            </li>
 							<li id="admin-login">
-				                <a href="${pageContext.request.contextPath }/WEB-INF/jsp/backend/admin/goods.jsp" target="iframe">
-				                    <i class="fa fa-circle-o"></i>商品审核
+				                <a href="${pageContext.request.contextPath }/selectGoodsAll" target="iframe">
+				                    <i class="fa fa-circle-o"></i>商品管理
 				                </a>
 				            </li>
 				        </ul>                        

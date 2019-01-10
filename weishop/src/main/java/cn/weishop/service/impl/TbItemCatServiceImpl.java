@@ -37,41 +37,7 @@ public class TbItemCatServiceImpl implements ITbItemCatService {
 		return null;
 	}
 
-	public List<TbItemCat> selectParentId1() {
-		try {
-			List<TbItemCat> list = tbItemCatMapper.selectParentId1();
-			if(list!=null){
-				return list;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	public List<TbItemCat> selectParentId2(int parentId) {
-		try {
-			List<TbItemCat> list = tbItemCatMapper.selectParentId2(parentId);
-			if(list!=null){
-				return list;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	public List<TbItemCat> selectParentId3(int parentId) {
-		try {
-			List<TbItemCat> list = tbItemCatMapper.selectParentId3(parentId);
-			if(list!=null){
-				return list;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+	
 
 	public boolean add(TbItemCat item) {
 		try {
@@ -97,9 +63,9 @@ public class TbItemCatServiceImpl implements ITbItemCatService {
 		return false;
 	}
 
-	public TbItemCat selectId(int id) {
+	public TbItemCat selectCatId(int id) {
 		try {
-			TbItemCat count = tbItemCatMapper.selectId(id);
+			TbItemCat count = tbItemCatMapper.selectCatId(id);
 			if(count!=null){
 				return count;
 			}
@@ -133,9 +99,61 @@ public class TbItemCatServiceImpl implements ITbItemCatService {
 		return 0;
 	}
 
-	public List<TbItemCat> SelectTypeId1(int type_id) {
+	public List<TbItemCat> SelectTypeId1() {
 		try {
-			List<TbItemCat> list = tbItemCatMapper.SelectTypeId1(type_id);
+			List<TbItemCat> list = tbItemCatMapper.SelectTypeId1();
+			if(list!=null){
+				return list;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public List<TbItemCat> SelectTypeId2(int parentId) {
+		try {
+			List<TbItemCat> list = tbItemCatMapper.SelectTypeId2(parentId);
+			if(list!=null){
+				return list;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public List<TbItemCat> SelectTypeId3(int parentId) {
+		try {
+			List<TbItemCat> list = tbItemCatMapper.SelectTypeId3(parentId);
+			if(list!=null){
+				return list;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+
+	public List<TbItemCat> selectIds(int id) {
+		try {
+			List<TbItemCat> list = tbItemCatMapper.selectIds(id);
+			if(list!=null){
+				return list;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+
+
+	@Override
+	public List<TbItemCat> SelectAllTypeId2() {
+		try {
+			List<TbItemCat> list = tbItemCatMapper.SelectAllTypeId2();
 			if(list!=null){
 				return list;
 			}

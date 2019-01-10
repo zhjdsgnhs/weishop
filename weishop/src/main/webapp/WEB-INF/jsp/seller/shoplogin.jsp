@@ -47,19 +47,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<img src="${pageContext.request.contextPath }/statics/img/wx_cz.jpg" />
 						</div>
 						<div id="profile" class="tab-pane  active">
-							<form class="sui-form">
+					
+							<form class="sui-form" action="${pageContext.request.contextPath}/logins" method="post">
 								<div class="input-prepend"><span class="add-on loginname"></span>
-									<input id="prependedInput" type="text" placeholder="邮箱/用户名/手机号" class="span2 input-xfat">
+									<input id="prependedInput" name="username" type="text" placeholder="邮箱/用户名/手机号" class="span2 input-xfat">
 								</div>
 								<div class="input-prepend"><span class="add-on loginpwd"></span>
-									<input id="prependedInput" type="password" placeholder="请输入密码" class="span2 input-xfat">
+									<input id="prependedInput" name="password" type="password" placeholder="请输入密码" class="span2 input-xfat">
 								</div>
 								<div class="setting">
 									<label class="checkbox inline"><input name="m1" type="checkbox" value="2" checked="">自动登录</label>
 									<span class="forget">忘记密码？</span>
 								</div>
 								<div class="logined">
-									<a class="sui-btn btn-block btn-xlarge btn-danger" href="sellerindex" target="_blank">登&nbsp;&nbsp;录</a>
+									<input type="button" onclick="logins()" class="sui-btn btn-block btn-xlarge btn-danger"  value="登录">
+									<!-- <a class="sui-btn btn-block btn-xlarge btn-danger" href="sellerindex" target="_blank">登&nbsp;&nbsp;录</a> -->
 								</div>
 							</form>
 							<div class="otherlogin">
@@ -73,6 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 								<span class="register"><a href="${pageContext.request.contextPath }/WEB-INF/jsp/seller/admin/register.jsp" target="_blank">立即注册</a></span>
 							</div>
+							
 						</div>
 					</div>
 				</div>
@@ -106,3 +109,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </body>
 
 </html>
+<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+<script type="text/javascript">
+  function logins(){
+    var username = $("[name=username]").val();
+    var password = $("[name=password]").val();
+    location.href="${pageContext.request.contextPath}/logins?username="+username+"&password="+password+"";
+  
+  }
+
+</script>
+
+

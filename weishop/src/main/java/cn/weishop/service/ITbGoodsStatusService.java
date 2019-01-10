@@ -1,7 +1,7 @@
 package cn.weishop.service;
-
 import cn.weishop.demo.TbGoodsStatus;
-import com.baomidou.mybatisplus.extension.service.IService;
+import java.util.List;
+
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author jeddden
  * @since 2018-12-28
  */
-public interface ITbGoodsStatusService extends IService<TbGoodsStatus> {
-
+public interface ITbGoodsStatusService{
+	List<TbGoodsStatus> selectStatus();
 }
