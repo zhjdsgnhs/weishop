@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.weishop.mapper.TbSellerTypeMapper">
+<mapper namespace="cn.weishop.mapper.TbSellerTypeMapper"> 
+<resultMap type="TbSellerType" id="sellerList">
+  <result property="sType" column="sType"/>
+  <result property="sPercent" column="sPercent"/>
+  <result property="status" column="status"/>
+</resultMap>
+  
+<select id="selectSeller" resultMap="sellerList" >
+  select s_typeid AS sTypeid,s_type AS sType,s_percent AS sPercent,
+  status AS status from tb_seller_type
+</select>
 
+<update id="updateSellerType" parameterType="cn.weishop.demo.TbSellerType">
+    UPDATE tb_seller_type SET 
+    s_type=#{sType},
+    s_percent=#{sPercent},
+    status=#{status} 
+    WHERE s_typeid=#{sTypeid}
+</update>
+ 
 </mapper>

@@ -4,4 +4,5 @@
  <select id="selectStatus" resultType="cn.weishop.demo.TbGoodsStatus">
    select * from tb_goods_status
  </select>
+    
 </mapper>

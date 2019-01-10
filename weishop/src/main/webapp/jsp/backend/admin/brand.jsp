@@ -103,7 +103,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="modal-content">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3 id="myModalLabel">商品编辑</h3>
+			<h3 id="myModalLabel">店铺编辑</h3>
+
 		</div>
 		<div class="modal-body">		
 			<table class="table table-bordered table-striped"  width="800px">

@@ -326,14 +326,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				   		 	</span>
 				        </a>
 				        <ul class="treeview-menu">
-				
-				            <li id="admin-login">
-				                <a href="${pageContext.request.contextPath }/WEB-INF/jsp/backend/admin/seller_1.jsp" target="iframe">
-				                    <i class="fa fa-circle-o"></i>商家审核
+							<li id="admin-login">
+				                <a href="selectSellerType" target="iframe">
+				                    <i class="fa fa-circle-o"></i>商家分类
 				                </a>
 				            </li>
-							<li id="admin-login">
-				                <a href="${pageContext.request.contextPath }/WEB-INF/jsp/backend/admin/seller.jsp" target="iframe">
+				            <li id="admin-login">
+				                <a href="" target="iframe">
 				                    <i class="fa fa-circle-o"></i>商家管理
 				                </a>
 				            </li>
