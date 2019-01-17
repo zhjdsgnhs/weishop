@@ -1,4 +1,5 @@
-﻿<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+﻿
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}"></c:set>
 <%
@@ -10,7 +11,7 @@
 <html>
 <head>
 <meta charset="utf-8"/>
-<title>积分商城</title>
+<title>微商城</title>
 <meta name="keywords"  content="KEYWORDS..." />
 <meta name="description" content="DESCRIPTION..." />
 <meta name="author" content="DeathGhost" />
@@ -65,8 +66,8 @@ $(document).ready(function(){
 <body>
 <!--header-->
 <header>
- <a href="${ctx}/jsp2/location.jsp" class="location">北京市</a>
-<div style="text-align:center;width:100%;">积分商城</div>
+ <a href="${ctx}/jsp2/location.jsp" class="location">岳阳市</a>
+<div style="text-align:center;width:100%;">微商城</div>
  <a href="${ctx}/jsp2/search.jsp" class="rt_searchIcon">&#37;</a>
 </header>
 <div style="height:1rem;"></div>
@@ -74,13 +75,18 @@ $(document).ready(function(){
 <div id="slide">
   <div class="swiper-wrapper">
     <div class="swiper-slide">
-     <a href="#">
-      <img src="${ctx}/statics/qiantai/upload/slide001.jpg"/>
+     <a href="${ctx}/productView?goodsId=13">
+      <img src="${ctx}/statics/qiantai/upload/裙子1.png"/>
      </a>
     </div>
     <div class="swiper-slide">
-     <a href="#">
-      <img src="${ctx}/statics/qiantai/upload/slide002.jpg"/>
+     <a href="${ctx}/productView?goodsId=36">
+      <img src="${ctx}/statics/qiantai/upload/世界这么大只喜欢你1.png"/>
+     </a>
+    </div>
+    <div class="swiper-slide">
+     <a href="${ctx}/productView?goodsId=40">
+      <img src="${ctx}/statics/qiantai/upload/羽绒服收腰.png"/>
      </a>
     </div>
   </div>
@@ -88,224 +94,179 @@ $(document).ready(function(){
 </div>
 <!--categoryList-->
 <ul class="categoryLiIcon">
- <li>
-     <a href="${ctx}/jsp2/product_list.jsp">
+
+
+<c:forEach items="${list}" var="lists">
+<c:if test="${lists.id==1}">
+  <li>
+     <a href="${ctx}/productList?id=${lists.id}">
          <img src="${ctx}/statics/qiantai/upload/menu_bg_01.png" />
-         <em>家用电器</em>
+         <em>${lists.name}</em>
      </a>
- </li>
- <li>
-     <a href="${ctx}/jsp2/product_list2.jsp">
-         <img src="${ctx}/statics/qiantai/upload/menu_bg_06.png" />
-         <em>数码生活</em>
-     </a>
- </li>
- <li>
-     <a href="${ctx}/jsp2/product_list3.jsp">
-         <img src="${ctx}/statics/qiantai/upload/menu_bg_10.png" />
-         <em>家居家装</em>
-     </a>
- </li>
- <li>
-     <a href="${ctx}/jsp2/product_list4.jsp">
-         <img src="${ctx}/statics/qiantai/upload/menu_bg_14.png" />
-         <em>美妆个护</em>
-     </a>
- </li>
- <li>
-     <a href="${ctx}/jsp2/product_list5.jsp">
+  </li>
+  </c:if>
+    
+   <c:if test="${lists.id==74}">
+    <li>  
+     <a href="${ctx}/productList?id=${lists.id}">
          <img src="${ctx}/statics/qiantai/upload/menu_bg_03.png" />
-         <em>母婴产品</em>
+         <em>${lists.name}</em>
      </a>
- </li>
- <li>
-     <a href="${ctx}/jsp2/product_list6.jsp">
+    </li> 
+   </c:if>
+   
+   
+   <c:if test="${lists.id==161}">
+   <li>  
+     <a href="${ctx}/productList?id=${lists.id}">
+         <img src="${ctx}/statics/qiantai/upload/menu_bg_06.png" />
+         <em>${lists.name}</em>
+     </a>
+    </li> 
+    </c:if>
+    
+    <c:if test="${lists.id==249}">
+    <li> 
+     <a href="${ctx}/productList?id=${lists.id}">
          <img src="${ctx}/statics/qiantai/upload/menu_bg_07.png" />
-         <em>户外运动</em>
+         <em>${lists.name}</em>
      </a>
- </li>
- <li>
-     <a href="${ctx}/jsp2/product_list7.jsp">
+    </li>
+    </c:if>
+    
+    <c:if test="${lists.id==296}">
+    <li>
+      <a href="${ctx}/productList?id=${lists.id}">
+         <img src="${ctx}/statics/qiantai/upload/menu_bg_10.png" />
+         <em>${lists.name}</em>
+      </a>
+     </li>
+     </c:if>
+      
+    <c:if test="${lists.id==558}">
+    <li> 
+     <a href="${ctx}/productList?id=${lists.id}">
          <img src="${ctx}/statics/qiantai/upload/menu_bg_11.png" />
-         <em>健康医疗</em>
+         <em>${lists.name}</em>
      </a>
- </li>
- <li>
-     <a href="${ctx}/jsp2/product_list8.jsp">
+    </li>
+    </c:if>
+    
+    <c:if test="${lists.id==558}"> 
+    <li>
+     <a href="${ctx}/productList?id=${lists.id}">
+         <img src="${ctx}/statics/qiantai/upload/menu_bg_07.png" />
+         <em>${lists.name}</em>
+     </a>
+    </li>
+    </c:if>
+    
+    <c:if test="${lists.id==749}">
+    <li>
+     <a href="${ctx}/productList?id=${lists.id}">
+         <img src="${ctx}/statics/qiantai/upload/menu_bg_14.png" />
+         <em>${lists.name}</em>
+     </a>
+    </li>
+    </c:if>
+    
+    <c:if test="${lists.id==1031}">
+    <li>
+     <a href="${ctx}/productList?id=${lists.id}">
+         <img src="${ctx}/statics/qiantai/upload/menu_bg_06.png" />
+         <em>${lists.name}</em>
+     </a>
+    </li>
+    </c:if>
+</c:forEach>
+
+ 
+ <%-- <li>
+     <a href="${ctx}/productList?id=${lists.id}">
          <img src="${ctx}/statics/qiantai/upload/menu_bg_15.png" />
          <em>更多惊喜</em>
      </a>
- </li>
+ </li> --%>
 </ul>
 <!--Tab:productList-->
 <dl class="tab_proList">
  <dt>
-  <a>热销</a>
-  <a>新品</a>
-  <a>打折</a>
+  <a href="${ctx}/ReiXiao">热销</a>
+  <a href="${ctx}/XinPin">新品</a>
+  <a href="${ctx}/Zhekou">打折</a>
  </dt>
  <dd>
   <ul>
-   <li>
-    <a href="${ctx}/jsp2/product.jsp" class="goodsPic">
-     <img src="${ctx}/statics/qiantai/upload/goods001.jpg"/>
+  <c:forEach items="${listRX}" var="listRX">
+    <li>
+    <a href="${ctx}/productView?goodsId=${listRX.id}" class="goodsPic">
+     <img src="${ctx}/upload/${listRX.smallPic}"/>
     </a>
     <div class="goodsInfor">
      <h2>
-      <a href="${ctx}/jsp2/product.jsp">COV橘子庄园 6秒急速电动开</a>
+      <a href="${ctx}/productView?goodsId=${listRX.id}">${listRX.goodsName}</a>
      </h2>
      <p>
       <del>1200</del>
      </p>
      <p>
-      <strong class="price">1000</strong>
+      <strong class="price">${listRX.price}</strong>
      </p>
      <a class="addToCart">&#126;</a>
     </div>
    </li>
-   <li>
-    <a href="${ctx}/jsp2/product.jsp" class="goodsPic">
-     <img src="${ctx}/statics/qiantai/upload/goods002.jpg"/>
-    </a>
-    <div class="goodsInfor">
-     <h2>
-      <a href="${ctx}/jsp2/product.jsp">IBOH艾铂赫煎锅H863 家用</a>
-     </h2>
-     <p>
-      <del>1200</del>
-     </p>
-     <p>
-      <strong class="price">1000</strong>
-     </p>
-     <a class="addToCart">&#126;</a>
-    </div>
-   </li>
-   <li>
-    <a href="${ctx}/jsp2/product.jsp" class="goodsPic">
-     <img src="${ctx}/statics/qiantai/upload/goods003.jpg"/>
-    </a>
-    <div class="goodsInfor">
-     <h2>
-      <a href="${ctx}/jsp2/product.jsp">德国GESS 减肥腰带懒人甩脂</a>
-     </h2>
-     <p>
-      <del>1200</del>
-     </p>
-     <p>
-      <strong class="price">1000</strong>
-     </p>
-     <a class="addToCart">&#126;</a>
-    </div>
-   </li>
+  </c:forEach>
   </ul>
  </dd>
+ 
+ 
  <dd>
   <ul>
+  <c:forEach items="${listXP}" var="listXP">
    <li>
-    <a href="${ctx}/jsp2/product.jsp" class="goodsPic">
-     <img src="${ctx}/statics/qiantai/upload/goods004.jpg"/>
+    <a href="${ctx}/productView?goodsId=${listXP.id}" class="goodsPic">
+     <img src="${ctx}/upload/${listXP.smallPic}"/>
     </a>
     <div class="goodsInfor">
      <h2>
-      <a href="${ctx}/jsp2/product.jsp">人民本（RMBook）N3系列</a>
+      <a href="${ctx}/productView?goodsId=${listXP.id}">${listXP.goodsName}</a>
      </h2>
-     <p>
-      <del>600</del>
+    <p>
+      <del>800</del>
      </p>
      <p>
-      <strong class="price">500</strong>
+      <strong class="price">${listXP.price}</strong>
      </p>
      <a class="addToCart">&#126;</a>
     </div>
    </li>
-   <li>
-    <a href="${ctx}/jsp2/product.jsp" class="goodsPic">
-     <img src="${ctx}/statics/qiantai/upload/goods008.jpg"/>
-    </a>
-    <div class="goodsInfor">
-     <h2>
-      <a href="${ctx}/jsp2/product.jsp">人民本（RMBook）N3系列</a>
-     </h2>
-     <p>
-      <del>600</del>
-     </p>
-     <p>
-      <strong class="price">500</strong>
-     </p>
-     <a class="addToCart">&#126;</a>
-    </div>
-   </li>
-   <li>
-    <a href="${ctx}/jsp2/product.jsp" class="goodsPic">
-     <img src="${ctx}/statics/qiantai/upload/goods009.jpg"/>
-    </a>
-    <div class="goodsInfor">
-     <h2>
-      <a href="${ctx}/jsp2/product.jsp">人民本（RMBook）N3系列</a>
-     </h2>
-     <p>
-      <del>500</del>
-     </p>
-     <p>
-      <strong class="price">3.90</strong>
-     </p>
-     <a class="addToCart">&#126;</a>
-    </div>
-   </li>
+  </c:forEach>
+  </ul>
  </dd>
+ 
+ 
  <dd>
   <ul>
+    <c:forEach items="${listZK}" var="listZK">
    <li>
-    <a href="${ctx}/jsp2/product.jsp" class="goodsPic">
-     <img src="${ctx}/statics/qiantai/upload/goods005.jpg"/>
+    <a href="${ctx}/productView?goodsId=${listZK.id}" class="goodsPic">
+     <img src="${ctx}/upload/${listZK.smallPic}"/>
     </a>
     <div class="goodsInfor">
      <h2>
-      <a href="${ctx}/jsp2/product.jsp">人民本（RMBook）N3系列</a>
+      <a href="${ctx}/productView?goodsId=${listZK.id}">${listZK.goodsName}</a>
      </h2>
      <p>
-      <del>400</del>
+      <del>5000</del>
      </p>
      <p>
-      <strong class="price">300</strong>
+      <strong class="price">${listZK.price}</strong>
      </p>
      <a class="addToCart">&#126;</a>
     </div>
    </li>
-   <li>
-    <a href="${ctx}/jsp2/product.jsp" class="goodsPic">
-     <img src="${ctx}/statics/qiantai/upload/goods006.jpg"/>
-    </a>
-    <div class="goodsInfor">
-     <h2>
-      <a href="${ctx}/jsp2/product.jsp">人民本（RMBook）N3系列</a>
-     </h2>
-     <p>
-      <del>400</del>
-     </p>
-     <p>
-      <strong class="price">300</strong>
-     </p>
-     <a class="addToCart">&#126;</a>
-    </div>
-   </li>
-   <li>
-    <a href="${ctx}/jsp2/product.jsp" class="goodsPic">
-     <img src="${ctx}/statics/qiantai/upload/goods007.jpg"/>
-    </a>
-    <div class="goodsInfor">
-     <h2>
-      <a href="${ctx}/jsp2/product.jsp">人民本（RMBook）N3系列</a>
-     </h2>
-     <p>
-      <del>400</del>
-     </p>
-     <p>
-      <strong class="price">300</strong>
-     </p>
-     <a class="addToCart">&#126;</a>
-    </div>
-   </li> 
+  </c:forEach>
+   </ul>
  </dd>
 </dl>
 <!--floatCart-->
@@ -314,8 +275,8 @@ $(document).ready(function(){
 </div>
 <div style="height:1.2rem;"></div>
 <nav>
- <a href="${ctx}/jsp2/index.jsp" class="homeIcon">首页</a>
- <a href="${ctx}/jsp2/category.jsp" class="categoryIcon">分类</a>
+ <a href="${ctx}/QTindex" class="homeIcon">首页</a>
+ <a href="${ctx}/QTfenlei" class="categoryIcon">分类</a>
  <a href="${ctx}/jsp2/cart.jsp" class="cartIcon">购物车</a>
  <a href="${ctx}/jsp2/user.jsp" class="userIcon">我的</a>
 </nav>

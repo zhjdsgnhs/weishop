@@ -78,6 +78,7 @@ public class TbGoodsController {
 				int count = iTbGoodsService.count(brandId, category1Id, category2Id, category3Id, statusId, promotionId, price1, price2, stock1, stock2, goodsName);
 				Page page = new Page();
 				page.setCountCurrSize(count);
+				
 				page.setCurrNo(num);
 				
 				int pageNum = (page.getCurrNo()-1)*page.getCurrSize();
@@ -113,6 +114,7 @@ public class TbGoodsController {
 					model.addAttribute("category1IdNameList1",category1IdNameList1);
 					model.addAttribute("category1IdNameList2",category1IdNameList2);
 					model.addAttribute("category1IdNameList3",category1IdNameList3);
+					model.addAttribute("goodsName",goodsName);
 					model.addAttribute("page",page);
 					return "jsp/backend/admin/goods";
 				}

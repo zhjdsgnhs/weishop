@@ -174,4 +174,85 @@ public class TbGoodsServiceImpl implements ITbGoodsService {
 	}
 
 
+
+
+	@Override
+	public List<TbGoods> ListselectCatId(int id,int brandId,int currNo,int currSize) {
+		try {
+			List<TbGoods> list = tbGoodsMapper.ListselectCatId(id,brandId,currNo,currSize);
+			if(list!=null){
+				return list;
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+
+
+
+	@Override
+	public int QTcount(int id,int brandId) {
+		try {
+			int count = tbGoodsMapper.QTcount(id,brandId);
+			if(count>0){
+				return count;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+
+
+
+	@Override
+	public List<TbGoods> selectlistXP() {
+		try {
+			List<TbGoods> list = tbGoodsMapper.selectlistXP();
+			if(list!=null){
+				return list;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+
+
+
+	@Override
+	public List<TbGoods> selectZhekou() {
+		try {
+			List<TbGoods> list = tbGoodsMapper.selectZhekou();
+			if(list!=null){
+				return list;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+
+
+
+	@Override
+	public List<TbGoods> selectReiXiao() {
+		try {
+			List<TbGoods> list = tbGoodsMapper.selectReiXiao();
+			if(list!=null){
+				return list;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+
 }

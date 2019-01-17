@@ -50,5 +50,10 @@ public interface ITbGoodsService{
 		boolean SelectStylenumber(String stylenumber);
 		boolean shangjia(int id);
 		boolean xiajia(int id);
+		List<TbGoods> ListselectCatId(int id,int brandId,int currNo,int currSize);
+		int QTcount(int id, int brandId);
+		List<TbGoods> selectlistXP();
+		List<TbGoods> selectZhekou();
+		List<TbGoods> selectReiXiao();
 
 }

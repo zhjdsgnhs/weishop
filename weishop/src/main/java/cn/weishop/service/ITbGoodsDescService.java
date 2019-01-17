@@ -11,6 +11,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author jeddden
  * @since 2018-12-28
  */
-public interface ITbGoodsDescService extends IService<TbGoodsDesc> {
+public interface ITbGoodsDescService {
+
+	TbGoodsDesc selectDescId(Integer goodsId);
 
 }

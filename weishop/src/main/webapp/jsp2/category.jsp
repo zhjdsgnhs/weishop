@@ -38,6 +38,8 @@
 <!--模板不变，异步处理，链接传参数，静态写过于累赘-->
 <aside class="class_tree">
  <ul>
+   
+ 
   <li class="current_style">
    <a>
     <img src="${ctx}/statics/qiantai/upload/menu_bg_01.png"/>
@@ -91,46 +93,21 @@
 <!--category content-->
 <ul class="category_cont">
  <li>
-  <a href="${ctx}/jsp2/product_list.jsp">全部</a>
+  <a href="${ctx}/productAll">全部</a>
  </li>
  <li>
-  <a href="${ctx}/jsp2/product_list.jsp">家纺</a>
- </li>
- <li>
-  <a href="${ctx}/jsp2/product_list.jsp">厨具</a>
- </li>
- <li>
-  <a href="${ctx}/jsp2/product_list.jsp">生活用品</a>
- </li>
- <li>
-  <a href="${ctx}/jsp2/product_list.jsp">厨房电器</a>
- </li>
- <li>
-  <a href="${ctx}/jsp2/product_list.jsp">生活电器</a>
- </li>
- <li>
-  <a href="${ctx}/jsp2/product_list.jsp">个护健康</a>
- </li>
- <li>
-  <a href="${ctx}/jsp2/product_list.jsp">妈咪宝贝</a>
- </li>
- <li>
-  <a href="${ctx}/jsp2/product_list.jsp">运动休闲</a>
- </li>
+  <c:forEach items="${list}" var="lists">
   <li>
-  <a href="${ctx}/jsp2/product_list.jsp">户外装备</a>
- </li>
-  <li>
-  <a href="${ctx}/jsp2/product_list.jsp">汽车用品</a>
- </li>
-  <li>
-  <a href="${ctx}/jsp2/product_list.jsp">美妆清洁</a>
- </li>
+     <a href="${ctx}/productList?id=${lists.id}">
+         <em>${lists.name}</em>
+     </a>
+  </li>
+  </c:forEach>
 </ul>
 <div style="height:1.2rem;"></div>
 <nav>
- <a href="${ctx}/jsp2/index.jsp" class="homeIcon">首页</a>
- <a href="${ctx}/jsp2/category.jsp" class="categoryIcon">分类</a>
+ <a href="${ctx}/QTindex" class="homeIcon">首页</a>
+ <a href="${ctx}/QTfenlei" class="categoryIcon">分类</a>
  <a href="${ctx}/jsp2/cart.jsp" class="cartIcon">购物车</a>
  <a href="${ctx}/jsp2/user.jsp" class="userIcon">我的</a>
 </nav>

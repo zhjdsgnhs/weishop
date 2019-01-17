@@ -1,7 +1,7 @@
 spring: 
   mvc: 
     view: 
-      prefix: /WEB-INF/jsp/
+      prefix: /
       suffix: .jsp
       
   datasource:
@@ -9,9 +9,6 @@ spring:
      username: root
      password: 123
      url: jdbc:mysql://localhost:3306/weishopdb
-  
-  
-  
   
   redis:
     database: 0
@@ -21,13 +18,8 @@ spring:
   application:
     name: spring-boot-redis
 
-
 mybatis-plus:
-
-  mapper-locations:
-    classpath:mapper/*Mapper.xml
-     
-     
-     #type-aliases-package: cn.weishop.demo
+  mapper-locations: classpath:mapper/*Mapper.xml
+  #type-aliases-package: cn.weishop.demo
 
 

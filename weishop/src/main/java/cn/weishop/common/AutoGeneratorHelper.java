@@ -49,7 +49,8 @@ public class AutoGeneratorHelper {
 	        pc.setXml("cn.weishop.mapper.mapping");
 	        pc.setService("cn.weishop.service");        
 	        pc.setServiceImpl("cn.weishop.service.impl");    
-	        pc.setController("cn.weishop.controller");     
+	        pc.setController("cn.weishop.controller"); 
+	        pc.setController("cn.weishop.qtcontroller"); 
 	        mpg.setPackageInfo(pc);
 
 	        // 自定义配置

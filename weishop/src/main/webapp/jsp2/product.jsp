@@ -1,3 +1,5 @@
+
+
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}"></c:set>
@@ -44,14 +46,13 @@ $(document).ready(function(){
 </header>
 <div style="height:1rem;"></div>
 <div class="pro_bigImg">
- <img src="${ctx}/statics/qiantai/upload/goods001.jpg"/>
+ <img src="${ctx}/upload/${descs.goodSmallPic}"/>
 </div>
-<!--base information-->
+
 <section class="pro_baseInfor">
- <h2>COV橘子庄园 6秒急速电动开瓶器 310-B01</h2>
+ <h2>${descs.introduction}</h2>
  <p>
-  <strong>752.50</strong>
-  <del>700.20</del>
+  <strong>${descs.goodprice}</strong>
  </p>
 </section>
 <!--product attr-->
@@ -65,7 +66,7 @@ $(document).ready(function(){
    </li>
    <li>
     <span>产品规格</span>
-    <em>尺寸φ5*27.5cm </em>
+    <em>${descs.specificationItems}</em>
    </li>
    <li>
     <span>产品重量</span>
@@ -77,16 +78,16 @@ $(document).ready(function(){
    </li>
    <li>
     <span>保质期</span>
-    <em>永远</em>
+    <em>${descs.packageList}</em>
    </li>
-   <li>
-    <span>所属品牌</span>
-    <em>COV</em>
-   </li>
+  
   </ul>
  </dd>
 </dl>
-<img src="${ctx}/statics/qiantai/upload/dd.jpg" style="width:100%;"/>
+<img src="${ctx}/upload/${descs.itemImages1}" style="width:100%;"/>
+<img src="${ctx}/upload/${descs.itemImages2}" style="width:100%;"/>
+<img src="${ctx}/upload/${descs.itemImages3}" style="width:100%;"/>
+<img src="${ctx}/upload/${descs.itemImages4}" style="width:100%;"/>
 <!--bottom nav-->
 <div style="height:1rem;"></div>
 <aside class="btmNav">

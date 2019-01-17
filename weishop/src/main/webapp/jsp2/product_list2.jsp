@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="utf-8"/>
-<title>产品列表</title>
+<title></title>
 <meta name="keywords"  content="KEYWORDS..." />
 <meta name="description" content="DESCRIPTION..." />
 <meta name="author" content="DeathGhost" />
@@ -60,114 +60,72 @@ $(document).ready(function(){
 <!--header-->
 <header>
  <a href="javascript:history.go(-1);" class="iconfont backIcon">&#60;</a>
- <h1>数码生活</h1>
+<%--  <h1>${listGood.category1IdName}</h1> --%>
  <a href="${ctx}/jsp2/search.jsp" class="rt_searchIcon">&#63;</a>
 </header>
 <div style="height:1rem;"></div>
  <!--asc->1[升序asc_icon];des->0[降序des_icon]-->
  <ul class="sift_nav">
-  <li><a class="des_icon">价格</a></li>
+  <li><a class="des_icon" href="javaScript:void(0);" onclick="jia();">价格</a></li>
   <li><a class="des_icon">销量优先</a></li>
   <li>
    <a class="nav_li drop_icon">品牌筛选</a>
-   <ul class="drop_list">
+  
+    <ul class="drop_list">
+    <select name="brandId" onchange="QTSelectBrand()">
+    <li><option value="0" >请选择</option></li>
+    <c:forEach items="${listBrand}" var="brands">
+    <c:if test="${brands.id==brandId}">selected</c:if>
+      <li><option value="${brands.id}" >${brands.name}</option></li>
+   </c:forEach> 
+    <!-- <li><a>品牌名</a></li>
     <li><a>品牌名</a></li>
     <li><a>品牌名</a></li>
-    <li><a>品牌名</a></li>
-    <li><a>品牌名</a></li>
+    <li><a>品牌名</a></li> -->
+    </select>
    </ul>
+   
+  
   </li>
  </ul>
 <!--productList-->
 <section class="productList">
   <ul>
-   <li>
-    <a href="${ctx}/jsp2/product.jsp" class="goodsPic">
-        <img src="${ctx}/statics/qiantai/upload/productlist/gl1.jpg" />
-    </a>
-    <div class="goodsInfor">
-     <h2>
-      <a href="${ctx}/jsp2/product.jsp">GoPro 摄录相机HERO6 Black</a>
-     </h2>
-     <p>
-      <del>5.90</del>
-     </p>
-     <p>
-      <strong class="price">3.90</strong>
-     </p>
-     <a class="addToCart">&#126;</a>
-    </div>
+    <c:forEach items="${listGood}" var="goods">
+     <li>
+	    <a href="${ctx}/productView?goodsId=${goods.id}" class="goodsPic">
+	     <img src="${ctx}/upload/${goods.smallPic}" width="100px" height="100px"/>
+	    </a>
+	    <div class="goodsInfor">
+	     <h1>
+	      <a href="${ctx}/jsp2/product.jsp" style="color: red">${goods.goodsName}</a>
+	     </h1>
+	     
+	      <p>
+	             品牌:<strong class="sales" style="color: threeddarkshadow;">${goods.brandName}</strong>
+	     </p>
+	     
+	     <p>
+	     <strong class="sales" style="color: threeddarkshadow;">销量:${goods.sales}</strong> 
+	     </p>
+	     <p>
+	             价格:<strong class="price">${goods.price}</strong>
+	     </p>
+	     
+	     <a class="addToCart">&#126;</a>
+	    </div>
    </li>
-   <li>
-    <a href="${ctx}/jsp2/product.jsp" class="goodsPic">
-        <img src="${ctx}/statics/qiantai/upload/productlist/gl2.jpg" />
-    </a>
-    <div class="goodsInfor">
-     <h2>
-      <a href="${ctx}/jsp2/product.jsp">GoPro 摄录相机HERO5 Black</a>
-     </h2>
-     <p>
-      <del>12.90</del>
-     </p>
-     <p>
-      <strong class="price">8.90</strong>
-     </p>
-     <a class="addToCart">&#126;</a>
-    </div>
-   </li>
-   <li>
-    <a href="${ctx}/jsp2/product.jsp" class="goodsPic">
-        <img src="${ctx}/statics/qiantai/upload/productlist/gl3.jpg" />
-    </a>
-    <div class="goodsInfor">
-     <h2>
-      <a href="${ctx}/jsp2/product.jsp">GoPro 摄录相机HERO6 Black旅行套装</a>
-     </h2>
-     <p>
-      <del>9.90</del>
-     </p>
-     <p>
-      <strong class="price">6.90</strong>
-     </p>
-     <a class="addToCart">&#126;</a>
-    </div>
-   </li>
-   <li>
-    <a href="${ctx}/jsp2/product.jsp" class="goodsPic">
-        <img src="${ctx}/statics/qiantai/upload/productlist/gl4.jpg" />
-    </a>
-    <div class="goodsInfor">
-     <h2>
-      <a href="${ctx}/jsp2/product.jsp">GoPro 三向支架</a>
-     </h2>
-     <p>
-      <del>9.90</del>
-     </p>
-     <p>
-      <strong class="price">6.90</strong>
-     </p>
-     <a class="addToCart">&#126;</a>
-    </div>
-   </li>
-   <li>
-    <a href="${ctx}/jsp2/product.jsp" class="goodsPic">
-        <img src="${ctx}/statics/qiantai/upload/productlist/gl5.jpg" />
-    </a>
-    <div class="goodsInfor">
-     <h2>
-      <a href="${ctx}/jsp2/product.jsp">Beats Solo3 Wireless 头戴式 蓝牙无线耳机</a>
-     </h2>
-     <p>
-      <del>9.90</del>
-     </p>
-     <p>
-      <strong class="price">6.90</strong>
-     </p>
-     <a class="addToCart">&#126;</a>
-    </div>
-   </li>
+    
+    </c:forEach>
   </ul>
-  <a class="more_btn">加载更多</a>
+  
+  <div align="center" style="font-size: 18px">
+  <!-- <a class="more_btn">加载更多</a> -->
+  <a href="${ctx}/productAll?num=1&brandId=${brandId}">首页</a>
+  <a href="${ctx}/productAll?num=${page.currNo-1}&brandId=${brandId}">上页</a>
+  <a href="${ctx}/productAll?num=${page.currNo+1}&brandId=${brandId}">下页</a>
+  <a href="${ctx}/productAll?num=${page.countCurrNo}&brandId=${brandId}">末页</a>
+</div>
 </section>
 <!--floatCart-->
 <div class="hoverCart">
@@ -175,3 +133,13 @@ $(document).ready(function(){
 </div>
 </body>
 </html>
+
+<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+<script type="text/javascript">
+     function QTSelectBrand(){
+      var brandId = $("[name=brandId]").val();
+     location.href="${ctx}/productAll?brandId="+brandId+"&num=1";
+    
+  } 
+
+</script>

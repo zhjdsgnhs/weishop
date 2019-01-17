@@ -127,7 +127,7 @@
 		      	  <td>二级分类:</td>
 		      	  <td>
 		      	    <select class="form-control" id="er" name="parentId2">
-		      	      <option value="0">请选择</option>
+		      	      <option value="0" selected = "selected">请选择</option>
 		      	    </select>
 		      	  </td>
 		      	</tr>
@@ -242,64 +242,38 @@ $(function(){
           var parentId = $("[name=parentId]").val();
           var parentId2= $("[name=parentId2]").val();
           var name= $("#name").val();  
-       if(typeId==null || typeId==""){
+          
+          var flag = true;
+          
+      	  if(typeId==null || typeId==""){
             alert("级别不能为空");
-             return false;
+             flag = false;
+          }
+          
+          
+          if(typeId==2 || typeId==3){
+            if(parentId==null || parentId==0){
+              alert("一级分类不能为空")
+             flag = false;
+             }
+          }
+             
+          if(typeId==3){
+           if(parentId2==null || parentId2==0){
+              alert("二级分类不能为空")
+             flag = false;
+          }
+          }   
+         
+          
+          
+          
+          if(name.length == 1){
+             alert("名称不能为空");
+            flag = false;
           }
          
-            if(parentId==null || parentId==""){
-              alert("一级分类不能为空")
-              return false;
-             }
-             
-            if(parentId2==null || parentId2==""){
-              alert("二级分类不能为空")
-              return false;
-             }
-           
-           if(name==null || name==""){
-             alert("名称不能为空");
-             return false;
-          }
-          return true;
-      
-         /*  if(typeId==2 || typeId==3){
-            if(parentId=="0"){
-            alert("一级分类不能为空")
-            
-             }
-             if(parentId2=="0"){
-            alert("二级分类不能为空")
-            
-             }
-             return false;
-          } */
-          
-          /* if(typeId==3){
-              if(parentId2=="0"){
-            alert("二级分类不能为空")
-            return false;
-             }
-
-          }
-           */
-     }
-     
-     
-     $(function(){
-          $("#tian").click(function(){
-          $("#myModalLabel").html('品牌添加');
-          $("[name=typeId]").val(" ");
-          $("[name=parentId]").val(" ");
-          $("[name=parentId2]").val(" ");
-          $("[name=name]").val(" ");
-          $("[name=id]").val(" ");
-          a1(); 
-        
-          
-       });
-     
-      $("#ti").click(function(){//提交
+         if(flag){
           var id=$("[name=id]").val();
           var typeId = $("[name=typeId]").val();
           var parentId = $("[name=parentId]").val();
@@ -312,7 +286,7 @@ $(function(){
 		                   "parentId=0&name="+name+"&typeId="+typeId
 		                   ,function(data){
 		            if(data=="true"){
-		              alert("添加成功");
+		              alert("添加成功1");
 		              location.href="${pageContext.request.contextPath}/selectAllParentId";
 		              /* $("#editModal").modal('hide'); */
 		            }else if(data=="false"){
@@ -328,7 +302,7 @@ $(function(){
 		                   ,function(data){
 		            if(data=="true"){
 		            
-		              alert("添加成功");
+		              alert("添加成功2");
 		              location.href="${pageContext.request.contextPath}/selectAllParentId";
 		            }else if(data=="false"){
 		              alert("添加失败");
@@ -344,7 +318,7 @@ $(function(){
 		                   "parentId="+parentId2+"&name="+name+"&typeId="+typeId
 		                   ,function(data){
 		            if(data=="true"){
-		              alert("添加成功");
+		              alert("添加成功3");
 		              location.href="${pageContext.request.contextPath}/selectAllParentId";
 		            }else if(data=="false"){
 		              alert("添加失败");
@@ -399,6 +373,25 @@ $(function(){
            }
           
  
+         }
+         
+     }
+     
+     
+     $(function(){
+          $("#tian").click(function(){
+          $("#myModalLabel").html('品牌添加');
+          $("[name=typeId]").val(" ");
+          $("[name=parentId]").val(" ");
+          $("[name=parentId2]").val(" ");
+          $("[name=name]").val(" ");
+          $("[name=id]").val(" ");
+          a1(); 
+        
+          
+       });
+     
+      $("#ti").submit(function(){//提交
       });
      
 });
