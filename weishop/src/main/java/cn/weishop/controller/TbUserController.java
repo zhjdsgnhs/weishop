@@ -1,19 +1,17 @@
 package cn.weishop.controller;
 
 
-import javax.servlet.http.HttpSession;
 
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import cn.weishop.demo.TbUser;
 import cn.weishop.service.ITbUserService;
-import cn.weishop.utils.Result;
+
 
 /**
  * <p>
@@ -24,7 +22,7 @@ import cn.weishop.utils.Result;
  * @since 2018-12-28
  */
 @Controller
-@RequestMapping("/tb-user")
+/*@RequestMapping("/tb-user")*/
 public class TbUserController {
 	
 	@Autowired
@@ -56,4 +54,5 @@ public class TbUserController {
 		
 	}
 
+	
 }

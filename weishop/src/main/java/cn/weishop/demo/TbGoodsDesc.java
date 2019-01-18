@@ -1,6 +1,8 @@
 package cn.weishop.demo;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -23,7 +25,7 @@ public class TbGoodsDesc implements Serializable {
     /**
      * SPU_ID
      */
-    private Long goodsId;
+    private int goodsDesc_idgoodsDesc_id;
 
     /**
      * 描述
@@ -40,7 +42,13 @@ public class TbGoodsDesc implements Serializable {
      */
     private String customAttributeItems;
 
-    private String itemImages;
+    private String itemImages1;
+    
+    private String itemImages2;
+    
+    private String itemImages3;
+    
+    private String itemImages4;
 
     /**
      * 包装列表
@@ -51,14 +59,13 @@ public class TbGoodsDesc implements Serializable {
      * 售后服务
      */
     private String saleService;
+    
+    private int goodsId;
+    
+    private BigDecimal goodprice;
+    private String goodSmallPic;
 
-	public Long getGoodsId() {
-		return goodsId;
-	}
 
-	public void setGoodsId(Long goodsId) {
-		this.goodsId = goodsId;
-	}
 
 	public String getIntroduction() {
 		return introduction;
@@ -84,12 +91,58 @@ public class TbGoodsDesc implements Serializable {
 		this.customAttributeItems = customAttributeItems;
 	}
 
-	public String getItemImages() {
-		return itemImages;
+	
+
+	public int getGoodsDesc_idgoodsDesc_id() {
+		return goodsDesc_idgoodsDesc_id;
 	}
 
-	public void setItemImages(String itemImages) {
-		this.itemImages = itemImages;
+	public void setGoodsDesc_idgoodsDesc_id(int goodsDesc_idgoodsDesc_id) {
+		this.goodsDesc_idgoodsDesc_id = goodsDesc_idgoodsDesc_id;
+	}
+
+	public String getItemImages1() {
+		return itemImages1;
+	}
+
+	public void setItemImages1(String itemImages1) {
+		this.itemImages1 = itemImages1;
+	}
+
+	public String getItemImages2() {
+		return itemImages2;
+	}
+
+	public void setItemImages2(String itemImages2) {
+		this.itemImages2 = itemImages2;
+	}
+
+	public String getItemImages3() {
+		return itemImages3;
+	}
+
+	public void setItemImages3(String itemImages3) {
+		this.itemImages3 = itemImages3;
+	}
+
+	public String getItemImages4() {
+		return itemImages4;
+	}
+
+	public void setItemImages4(String itemImages4) {
+		this.itemImages4 = itemImages4;
+	}
+
+	public int getGoodsId() {
+		return goodsId;
+	}
+
+	public void setGoodsId(int goodsId) {
+		this.goodsId = goodsId;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	public String getPackageList() {
@@ -107,6 +160,25 @@ public class TbGoodsDesc implements Serializable {
 	public void setSaleService(String saleService) {
 		this.saleService = saleService;
 	}
+
+	public BigDecimal getGoodprice() {
+		return goodprice;
+	}
+
+	public void setGoodprice(BigDecimal goodprice) {
+		this.goodprice = goodprice;
+	}
+
+	public String getGoodSmallPic() {
+		return goodSmallPic;
+	}
+
+	public void setGoodSmallPic(String goodSmallPic) {
+		this.goodSmallPic = goodSmallPic;
+	}
+
+
+	
 
     
 }

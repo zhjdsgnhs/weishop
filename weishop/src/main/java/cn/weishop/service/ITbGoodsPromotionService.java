@@ -1,7 +1,8 @@
 package cn.weishop.service;
 
 import cn.weishop.demo.TbGoodsPromotion;
-import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
  * <p>
@@ -11,6 +12,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author jeddden
  * @since 2018-12-28
  */
-public interface ITbGoodsPromotionService extends IService<TbGoodsPromotion> {
+public interface ITbGoodsPromotionService{
+
+	List<TbGoodsPromotion> selectPromotion();
 
 }

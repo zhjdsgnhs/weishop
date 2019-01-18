@@ -1,12 +1,15 @@
 package cn.weishop.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import cn.weishop.demo.TbSpecification;
 import cn.weishop.demo.TbUser;
+import cn.weishop.mapper.TbSpecificationMapper;
 import cn.weishop.mapper.TbUserMapper;
 import cn.weishop.service.ITbUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 /**
  * <p>

@@ -1,7 +1,9 @@
 package cn.weishop.mapper;
 
 import cn.weishop.demo.TbGoodsPromotion;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import java.util.List;
+
+import org.apache.ibatis.annotations.Select;
 
 /**
  * <p>
@@ -11,6 +13,10 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author jeddden
  * @since 2018-12-28
  */
-public interface TbGoodsPromotionMapper extends BaseMapper<TbGoodsPromotion> {
+public interface TbGoodsPromotionMapper{
+
+	
+	@Select("<script>select * from tb_goods_promotion</script>")
+	List<TbGoodsPromotion> selectPromotion();
 
 }
