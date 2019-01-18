@@ -350,8 +350,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				        <ul class="treeview-menu">
 				
 				            <li id="admin-login">
-				                <a href="${pageContext.request.contextPath }/WEB-INF/jsp/backend/admin/brand.jsp" target="iframe">
+				                <a href="/brand/select" target="iframe">
 				                    <i class="fa fa-circle-o"></i>品牌管理
+				                </a>
+				            </li>
+				             <li id="admin-login">
+				                <a href="/order/select"  target="iframe">
+				                    <i class="fa fa-circle-o"></i>订单管理
 				                </a>
 				            </li>
 							<li id="admin-login">

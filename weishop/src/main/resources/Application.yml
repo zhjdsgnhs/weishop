@@ -3,11 +3,12 @@ spring:
     view: 
       prefix: /WEB-INF/jsp/
       suffix: .jsp
+   
   datasource:
      driver-class-name: com.mysql.jdbc.Driver
      username: root
      password: 123
-     url: jdbc:mysql://localhost:3306/weishopdb
+     url: jdbc:mysql://localhost:3306/weishop
   
   redis:
     database: 0
@@ -16,4 +17,10 @@ spring:
     
   application:
     name: spring-boot-redis
-  
+ 
+mybatis-plus:
+ 
+  mapper-locations: classpath*:mapper/*Mapper.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    

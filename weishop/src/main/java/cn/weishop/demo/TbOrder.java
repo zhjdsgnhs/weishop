@@ -2,6 +2,7 @@ package cn.weishop.demo;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -26,11 +27,50 @@ public class TbOrder implements Serializable {
      * 订单id
      */
     private Long orderId;
+   
+    private String username;
+    
+    private String stype;
+    
+    public String getStype() {
+		return stype;
+	}
 
-    /**
+	public void setStype(String stype) {
+		this.stype = stype;
+	}
+
+	private String name;
+    
+    public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	private Integer cost;
+    public Integer getCost() {
+		return cost;
+	}
+
+	public void setCost(Integer cost) {
+		this.cost = cost;
+	}
+
+	/**
      * 实付金额。精确到2位小数;单位:元。如:200.07，表示:200元7分
      */
-    private BigDecimal payment;
+    private Double payment;
 
     /**
      * 支付类型，1、在线支付，2、货到付款
@@ -85,7 +125,7 @@ public class TbOrder implements Serializable {
     /**
      * 物流单号
      */
-    private String shippingCode;
+    private String shoptype;
 
     /**
      * 用户id
@@ -146,6 +186,16 @@ public class TbOrder implements Serializable {
      * 商家ID
      */
     private Integer sellerId;
+    
+    private List<TbOrderItem> TbOrderItemList;
+
+	public List<TbOrderItem> getTbOrderItemList() {
+		return TbOrderItemList;
+	}
+
+	public void setTbOrderItemList(List<TbOrderItem> tbOrderItemList) {
+		TbOrderItemList = tbOrderItemList;
+	}
 
 	public Long getOrderId() {
 		return orderId;
@@ -155,11 +205,11 @@ public class TbOrder implements Serializable {
 		this.orderId = orderId;
 	}
 
-	public BigDecimal getPayment() {
+	public Double getPayment() {
 		return payment;
 	}
-
-	public void setPayment(BigDecimal payment) {
+ 
+	public void setPayment(Double payment) {
 		this.payment = payment;
 	}
 
@@ -243,12 +293,12 @@ public class TbOrder implements Serializable {
 		this.shippingName = shippingName;
 	}
 
-	public String getShippingCode() {
-		return shippingCode;
+	public String getShoptype() {
+		return shoptype;
 	}
 
-	public void setShippingCode(String shippingCode) {
-		this.shippingCode = shippingCode;
+	public void setShoptype(String shoptype) {
+		this.shoptype = shoptype;
 	}
 
 	public String getUserId() {

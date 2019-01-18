@@ -33,7 +33,17 @@ public class TbOrderItem implements Serializable {
      */
     private Long goodsId;
 
-    /**
+    
+    private String goodsName;
+    public String getGoodsName() {
+		return goodsName;
+	}
+
+	public void setGoodsName(String goodsName) {
+		this.goodsName = goodsName;
+	}
+
+	/**
      * 订单id
      */
     private Long orderId;

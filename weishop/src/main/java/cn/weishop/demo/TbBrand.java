@@ -2,6 +2,9 @@ package cn.weishop.demo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
@@ -51,6 +54,7 @@ public class TbBrand implements Serializable {
      * 发布时间
      */
     @TableField("publishTime")
+    @DateTimeFormat(pattern="yyyy-mm-dd")
     private LocalDate publishTime;
 
 	public Integer getId() {
