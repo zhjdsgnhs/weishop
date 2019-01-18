@@ -4,6 +4,10 @@ import cn.weishop.demo.TbGoodsPromotion;
 import cn.weishop.mapper.TbGoodsPromotionMapper;
 import cn.weishop.service.ITbGoodsPromotionService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,6 +19,20 @@ import org.springframework.stereotype.Service;
  * @since 2018-12-28
  */
 @Service
-public class TbGoodsPromotionServiceImpl extends ServiceImpl<TbGoodsPromotionMapper, TbGoodsPromotion> implements ITbGoodsPromotionService {
+public class TbGoodsPromotionServiceImpl implements ITbGoodsPromotionService {
+    @Autowired
+	private TbGoodsPromotionMapper tbGoodsPromotionMapper;
+	
+	public List<TbGoodsPromotion> selectPromotion() {
+		try {
+			List<TbGoodsPromotion> list = tbGoodsPromotionMapper.selectPromotion();
+			if(list!=null){
+				return list;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 }

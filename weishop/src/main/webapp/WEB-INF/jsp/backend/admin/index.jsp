@@ -27,7 +27,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
     <script src="${pageContext.request.contextPath }/statics/plugins/adminLTE/js/app.min.js"></script>
     
-    <script type="text/javascript">   
+    
+<script type="text/javascript">   
+
 		 function SetIFrameHeight(){
 		  	  var iframeid=document.getElementById("iframe"); //iframe id
 		  	  if (document.getElementById){
@@ -433,6 +435,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </body>
 
-</html><SCRIPT Language=VBScript><!--
-
-//--></SCRIPT>
+</html>

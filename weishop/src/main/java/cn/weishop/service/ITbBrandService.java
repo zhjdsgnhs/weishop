@@ -19,4 +19,5 @@ public interface ITbBrandService extends IService<TbBrand> {
 	 int Qiyong (int id);
 	 
 	 int Jinyong (int id);
+	List<TbBrand> selectBrand();
 }

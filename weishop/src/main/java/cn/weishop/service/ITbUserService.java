@@ -1,6 +1,9 @@
 package cn.weishop.service;
 
 import cn.weishop.demo.TbUser;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +14,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author jeddden
  * @since 2018-12-28
  */
-public interface ITbUserService extends IService<TbUser> {
-
+public interface ITbUserService{
+	TbUser login(String username,String password);
 }

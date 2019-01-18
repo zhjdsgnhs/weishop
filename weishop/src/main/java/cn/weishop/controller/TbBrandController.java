@@ -72,6 +72,7 @@ public class TbBrandController {
     	 }  	 
         request.setAttribute("list", ITbBrandService.page(new Page<TbBrand>(num,5),query).getRecords());
     	int count=ITbBrandService.count(query);
+    
         int pagenum = count%5==0 ? count/5  : count/5+1; 
         request.setAttribute("count", count);
       	request.setAttribute("pageNum", pagenum);

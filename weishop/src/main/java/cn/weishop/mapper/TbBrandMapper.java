@@ -1,5 +1,9 @@
 package cn.weishop.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Select;
+
 import cn.weishop.demo.TbBrand;
 
 import java.util.List;
@@ -26,4 +30,6 @@ public interface TbBrandMapper extends BaseMapper<TbBrand> {
 	@Update("Update tb_brand set status=0 where id=#{id}")
 	int Jinyong(@Param("id")Integer id);
 	
+	@Select("<script>select * from tb_brand</script>")
+	List<TbBrand> selectBrand();
 }

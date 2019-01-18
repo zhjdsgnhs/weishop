@@ -7,11 +7,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
+import org.springframework.cache.annotation.EnableCaching;
+
 
 @SpringBootApplication
 @MapperScan("cn.weishop.mapper")
-public class WeishopApplication {
-	
+
+@EnableCaching
+public class WeishopApplication {	
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(WeishopApplication.class, args); 
 	}

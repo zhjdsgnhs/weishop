@@ -1,5 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.weishop.mapper.TbItemCatMapper">
-
+<select id="count" resultType="_int">
+     select count(1) from tb_item_cat
+  </select>
+  
+  <select id="selectAllParentId" resultType="cn.weishop.demo.TbItemCat">
+     select * from tb_item_cat limit #{currNo},#{currSize}
+  </select>
+  
+  <select id="SelectTypeId1" resultType="cn.weishop.demo.TbItemCat">
+     select * from tb_item_cat where type_id=1
+  </select>
+ 
+  <select id="SelectTypeId2" resultType="cn.weishop.demo.TbItemCat">
+     select * from tb_item_cat where parent_id=#{parentId}
+  </select>
+  
+  <select id="SelectTypeId3" resultType="cn.weishop.demo.TbItemCat">
+     select * from tb_item_cat where parent_id=#{parentId}
+  </select>
+  
+  <select id="selectIds" resultType="cn.weishop.demo.TbItemCat">
+     select * from tb_item_cat where parent_id=#{id}
+  </select>
+  
+  <delete id="delete" parameterType="_int">
+       delete from tb_item_cat where id=#{id}
+  </delete>
+  
+  <select id="selectCatId" resultType="cn.weishop.demo.TbItemCat">
+     select * from tb_item_cat where id=#{id}
+  </select>
+  
+  
+  
+  <insert id="add" parameterType="_int">
+     insert tb_item_cat 
+     <trim prefix=" (" suffix=")" suffixOverrides=",">
+       <if test="id!=null and id!='' and id=!0 ">id,</if>
+       <if test="parentId!=null and parentId!=0 ">parent_id,</if>
+       <if test="name!=null and name!='' ">name,</if>
+       <if test="typeId!=null and typeId!=0 ">type_id</if>
+     </trim>
+     
+     <trim prefix=" values(" suffix=")" suffixOverrides=",">
+       <if test="id!=null and id!='' and id=!0 ">NULL,</if>
+       <if test="parentId!=null and parentId!=0 ">#{parentId},</if>
+       <if test="name!=null and name!='' ">#{name},</if>
+       <if test="typeId!=null and typeId!=0 ">#{typeId}</if>
+     </trim>
+  </insert>
+  
+   <select id="SelectAllTypeId2" resultType="cn.weishop.demo.TbItemCat">
+     select * from tb_item_cat where type_id=2
+  </select>
+  
+  <update id="update" parameterType="_int">
+    update tb_item_cat
+    <set>
+      <if test="parentId!=null and parentId!=0 ">parent_id=#{parentId},</if>
+      <if test="name!=null and name!='' ">name=#{name},</if>
+      <if test="typeId!=null and typeId!=0 ">type_id=#{typeId}</if>
+    </set>
+    where id=#{id}
+  </update>
+  
+  
+  
+  
 </mapper>

@@ -1,10 +1,13 @@
 package cn.weishop.service.impl;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import cn.weishop.demo.TbSeller;
 import cn.weishop.mapper.TbSellerMapper;
 import cn.weishop.service.ITbSellerService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.stereotype.Service;
 
 /**
  * <p>
@@ -15,6 +18,21 @@ import org.springframework.stereotype.Service;
  * @since 2018-12-28
  */
 @Service
-public class TbSellerServiceImpl extends ServiceImpl<TbSellerMapper, TbSeller> implements ITbSellerService {
+public class TbSellerServiceImpl implements ITbSellerService {
+   @Autowired
+	private TbSellerMapper tbSellerMapper;
+	
+   
+	public List<TbSeller> selectSeller() {
+		try {
+			List<TbSeller> list = tbSellerMapper.selectSeller();
+			if(list!=null){
+				return list;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 }
