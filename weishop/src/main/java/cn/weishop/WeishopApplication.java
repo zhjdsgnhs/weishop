@@ -16,11 +16,12 @@ public class WeishopApplication {
 		SpringApplication.run(WeishopApplication.class, args); 
 	}
 	
+	
 	@Bean
 	public PaginationInterceptor pageinationInterceptor(){
 		return new PaginationInterceptor(); 
 	}
 	
-	
+	 
 	 
 }
