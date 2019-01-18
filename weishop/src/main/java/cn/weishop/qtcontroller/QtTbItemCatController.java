@@ -37,7 +37,6 @@ public class QtTbItemCatController {
 		 try {
 			 List<TbItemCat> list = iTbItemCatService.SelectTypeId1();
 			 List<TbGoods> listRX = iTbGoodsService.selectReiXiao();
-			 
 			 if(list!=null){
 					model.addAttribute("list",list);
 					model.addAttribute("listRX",listRX);

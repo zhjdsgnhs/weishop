@@ -143,7 +143,7 @@ $(document).ready(function(){
      </li>
      </c:if>
       
-    <c:if test="${lists.id==558}">
+    <c:if test="${lists.id==378}">
     <li> 
      <a href="${ctx}/productList?id=${lists.id}">
          <img src="${ctx}/statics/qiantai/upload/menu_bg_11.png" />

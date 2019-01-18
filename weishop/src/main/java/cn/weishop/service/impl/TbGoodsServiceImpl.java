@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -159,6 +160,8 @@ public class TbGoodsServiceImpl implements ITbGoodsService {
 		return false;
 	}
 	
+	
+	
 	@Override
 	public boolean xiajia(int id) {
 		try {
@@ -208,7 +211,7 @@ public class TbGoodsServiceImpl implements ITbGoodsService {
 
 
 
-
+	@Cacheable(value = "user_list",key ="#root.methodName", unless = "#result==null")
 	@Override
 	public List<TbGoods> selectlistXP() {
 		try {
@@ -224,7 +227,7 @@ public class TbGoodsServiceImpl implements ITbGoodsService {
 
 
 
-
+	@Cacheable(value = "user_list",key ="#root.methodName", unless = "#result==null")
 	@Override
 	public List<TbGoods> selectZhekou() {
 		try {
@@ -240,7 +243,7 @@ public class TbGoodsServiceImpl implements ITbGoodsService {
 
 
 
-
+	@Cacheable(value = "user_list",key ="#root.methodName", unless = "#result==null")
 	@Override
 	public List<TbGoods> selectReiXiao() {
 		try {

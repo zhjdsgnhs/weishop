@@ -1,14 +1,14 @@
 package cn.weishop.service.impl;
 
-import cn.weishop.demo.TbItemCat;
-import cn.weishop.mapper.TbItemCatMapper;
-import cn.weishop.service.ITbItemCatService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+
+import cn.weishop.demo.TbItemCat;
+import cn.weishop.mapper.TbItemCatMapper;
+import cn.weishop.service.ITbItemCatService;
 
 /**
  * <p>
@@ -25,6 +25,7 @@ public class TbItemCatServiceImpl implements ITbItemCatService {
 	@Autowired
 	private  TbItemCatMapper tbItemCatMapper;
     
+	
 	public List<TbItemCat> selectAllParentId(int currNo,int currSize) {
 		try {
 			List<TbItemCat> list = tbItemCatMapper.selectAllParentId(currNo,currSize);
@@ -99,6 +100,7 @@ public class TbItemCatServiceImpl implements ITbItemCatService {
 		return 0;
 	}
 
+	@Cacheable(value = "user_list",key ="#root.methodName", unless = "#result==null")
 	public List<TbItemCat> SelectTypeId1() {
 		try {
 			List<TbItemCat> list = tbItemCatMapper.SelectTypeId1();
