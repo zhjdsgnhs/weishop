@@ -1,5 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.weishop.mapper.TbContentMapper">
-
+	
+	<!-- <resultMap type="cn.weishop.demo.TbContent" id="queryList">
+		<result property="id" column="id"/>
+		<result property="categoryId" column="category_id"/>
+		<result property="title" column="title"/>
+		<result property="pic" column="pic"/>
+		<result property="sortOrder" column="sort_order"/>
+		<result property="name" column="name"/>
+		<result property="updateTime" column="updateTime"/>
+		<result property="categoryName" column="categoryName"/> 
+	</resultMap>
+	
+	<select id="selectContent" resultMap="queryList">
+		select * from tb_content tbc inner join tb_content_category tbcc
+		on tbc.category_id=tbcc.id
+			<where>
+				<if test="name!=null and name!=''">
+					and name like CONCAT ('%',#{name},'%')
+				</if>
+			</where>
+		limit #{currNo},#{currSize}
+	</select>
+	
+	<select id="count" resultType="_int">
+		select count(1) from tb_content tbc inner join tb_content_category tbcc
+		on tbc.category_id=tbcc.id
+			<where>
+			 	<if test="name!=null and name!=''">
+					and name like CONCAT ('%',#{name},'%')
+				</if>
+			</where>
+	</select>
+	
+	<insert id="insertContent">
+		insert tb_content values(null,#{categoryId},#{title},#{url},
+       						#{pic},#{sortOrder},#{name},NOW())
+	</insert>
+	
+	<select id="selContentId" resultType="cn.weishop.demo.TbContent">
+		select * from tb_content where id=#{id}
+	</select>
+	
+	<update id="updContent">
+		update tb_content
+			<trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+				<if test="categoryId!=null and categoryId!='' ">category_id=#{categoryId},</if>
+				<if test="title!=null and title!='' ">title=#{title},</if>
+				<if test="url!=null and url!='' ">url=#{url},</if>
+				<if test="pic!=null and pic!='' ">pic=#{pic},</if>
+				<if test="sortOrder!=null and sortOrder!='' ">sort_order=#{sortOrder},</if>
+				<if test="name!=null and name!='' ">name=#{name},</if>
+				updateTime=NOW()
+			</trim>
+	</update>
+	
+	<delete id="delContent">
+		delete from tb_content where id=#{id}
+	</delete>
+ -->
 </mapper>

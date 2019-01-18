@@ -4,6 +4,10 @@ import cn.weishop.demo.TbContentCategory;
 import cn.weishop.mapper.TbContentCategoryMapper;
 import cn.weishop.service.ITbContentCategoryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,5 +20,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class TbContentCategoryServiceImpl extends ServiceImpl<TbContentCategoryMapper, TbContentCategory> implements ITbContentCategoryService {
+	@Autowired
+	private TbContentCategoryMapper tbContentCategoryMapper;
+	
+	public List<TbContentCategory> selectCategory() {
+		return tbContentCategoryMapper.selectCategory();
+	}
 
 }

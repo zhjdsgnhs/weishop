@@ -262,7 +262,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="${pageContext.request.contextPath }/statics/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                                <span class="hidden-xs">测试用户</span>
+                                <span class="hidden-xs">${tbUser.username}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
@@ -270,7 +270,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <img src="${pageContext.request.contextPath }/statics/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                     <p>
-                                       测试用户 
+                                      ${tbUser.username}
                                         <small>最后登录 11:20AM</small>
                                     </p>
                                 </li>
@@ -303,7 +303,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <img src="${pageContext.request.contextPath }/statics/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
-                        <p> 测试用户</p>
+                        <p> ${tbUser.username}</p>
                         <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
                     </div>
                 </div>
@@ -386,15 +386,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				   		 	</span>
 				        </a>
 				        <ul class="treeview-menu">
-				
-				            <li id="admin-login">
-				                <a href="${pageContext.request.contextPath }/WEB-INF/jsp/backend/admin/content_category.jsp" target="iframe">
-				                    <i class="fa fa-circle-o"></i>广告类型管理
+							<li id="admin-login">
+				                <a href="/selectContent" target="iframe">
+				                    <i class="fa fa-circle-o"></i>广告查询
 				                </a>
 				            </li>
+				        </ul>                        
+				    </li>
+				    
+				    <li class="treeview">
+				        <a href="#">
+				            <i class="fa fa-folder"></i> 
+				            <span>主题管理</span>
+				            <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+				        </a>
+				        <ul class="treeview-menu">
 							<li id="admin-login">
-				                <a href="${pageContext.request.contextPath }/WEB-INF/jsp/backend/admin/content.jsp" target="iframe">
-				                    <i class="fa fa-circle-o"></i>广告管理
+				                <a href="/selectTbTheme" target="iframe">
+				                    <i class="fa fa-circle-o"></i>主题管理
 				                </a>
 				            </li>
 				        </ul>                        

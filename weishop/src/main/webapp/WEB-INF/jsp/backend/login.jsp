@@ -43,12 +43,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<img src="${pageContext.request.contextPath }/statics/img/wx_cz.jpg" />
 					</div>
 					<div id="profile" class="tab-pane  active">
-						<form class="sui-form">
+						<form class="sui-form" action="tbUserLogin">
 							<div class="input-prepend"><span class="add-on loginname"></span>
-								<input id="prependedInput" type="text" placeholder="邮箱/用户名/手机号" class="span2 input-xfat">
+								<input id="prependedInput" type="text" name="username" placeholder="邮箱/用户名/手机号" required="" class="span2 input-xfat">
 							</div>
 							<div class="input-prepend"><span class="add-on loginpwd"></span>
-								<input id="prependedInput" type="password" placeholder="请输入密码" class="span2 input-xfat">
+								<input id="prependedInput" type="password" name="password" placeholder="请输入密码" required="" class="span2 input-xfat">
 							</div>
 							<div class="setting">
 								 <div id="slider">
@@ -56,8 +56,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<span id="label">>></span> <span id="labelTip">拖动滑块验证</span>
 									</div>
 							</div>
+							<span>${error}</span>
 							<div class="logined">
-								<a class="sui-btn btn-block btn-xlarge btn-danger" href="login" target="_blank">登&nbsp;&nbsp;录</a>
+								<!-- <a class="sui-btn btn-block btn-xlarge btn-danger" href="login" target="_blank">登&nbsp;&nbsp;录</a> -->
+								<button type="submit" class="sui-btn btn-block btn-xlarge btn-danger">登&nbsp;&nbsp;录</button>
+              					<button type="reset" class="sui-btn btn-block btn-xlarge btn-danger">重&nbsp;&nbsp;填</button>
 							</div>
 						</form>
 

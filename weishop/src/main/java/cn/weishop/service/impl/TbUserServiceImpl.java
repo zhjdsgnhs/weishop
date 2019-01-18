@@ -4,6 +4,8 @@ import cn.weishop.demo.TbUser;
 import cn.weishop.mapper.TbUserMapper;
 import cn.weishop.service.ITbUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,5 +18,12 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class TbUserServiceImpl extends ServiceImpl<TbUserMapper, TbUser> implements ITbUserService {
+
+	@Autowired
+	private TbUserMapper tbUserMapper;
+	
+	public TbUser tbUserLogin(String username, String password) {
+		return tbUserMapper.tbUserLogin(username, password);
+	}
 
 }

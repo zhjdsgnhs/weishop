@@ -1,6 +1,7 @@
 package cn.weishop.service;
 
 import cn.weishop.demo.TbUser;
+
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -12,5 +13,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2018-12-28
  */
 public interface ITbUserService extends IService<TbUser> {
+	TbUser tbUserLogin(String username,String password);
 
 }

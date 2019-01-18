@@ -31,7 +31,7 @@ public class TbContentCategory implements Serializable {
     /**
      * 分类名称
      */
-    private String name;
+    private String categoryName;
 
 	public Long getId() {
 		return id;
@@ -41,13 +41,12 @@ public class TbContentCategory implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getCategoryName() {
+		return categoryName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
-
     
 }
