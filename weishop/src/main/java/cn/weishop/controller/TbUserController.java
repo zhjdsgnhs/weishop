@@ -28,10 +28,10 @@ public class TbUserController {
 	@Autowired
 	private ITbUserService iTbUserService;
 	
-	@RequestMapping("/login")
-    public String login(){
-    	return "backend/admin/index";
-    }
+//	@RequestMapping("/login")
+//    public String login(){
+//    	return "backend/admin/index";
+//    }
 	
 	@RequestMapping("tbUserLogin")
 	public String tbUserLogin(@RequestParam(value="username",required=false) String username,
