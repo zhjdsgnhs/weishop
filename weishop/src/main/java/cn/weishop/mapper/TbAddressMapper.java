@@ -1,7 +1,11 @@
 package cn.weishop.mapper;
 
 import cn.weishop.demo.TbAddress;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Select;
+
 
 /**
  * <p>
@@ -11,6 +15,9 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author jeddden
  * @since 2018-12-28
  */
-public interface TbAddressMapper extends BaseMapper<TbAddress> {
+public interface TbAddressMapper{
+	
+	@Select("select * from tb_address")
+	public List<TbAddress> selectAddress();
 
 }

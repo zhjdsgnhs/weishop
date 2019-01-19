@@ -1,7 +1,8 @@
 package cn.weishop.service;
 
+import java.util.List;
+
 import cn.weishop.demo.TbAddress;
-import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author jeddden
  * @since 2018-12-28
  */
-public interface ITbAddressService extends IService<TbAddress> {
+public interface ITbAddressService{
+	public List<TbAddress> selectAddress();
 
 }

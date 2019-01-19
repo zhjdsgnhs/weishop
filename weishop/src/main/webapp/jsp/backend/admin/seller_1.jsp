@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -20,14 +21,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" href="${pageContext.request.contextPath }/statics/css/style.css">
 	<script src="${pageContext.request.contextPath }/statics/plugins/jQuery/jquery-2.2.3.min.js"></script>
     <script src="${pageContext.request.contextPath }/statics/plugins/bootstrap/js/bootstrap.min.js"></script>
-    
+   
+       
 </head>
-
 <body class="hold-transition skin-red sidebar-mini"  >
+<form action="selectSellerAll">
   <!-- .box-body -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">商家审核</h3>
+                        <h3 class="box-title">商家管理</h3>
                     </div>
 
                     <div class="box-body">
@@ -36,12 +38,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <div class="table-box">
 
                             <!--工具栏-->
-                            
-                            <div class="box-tools pull-right">
-                                <div class="has-feedback">
-							        公司名称：<input  >
-									店铺名称： <input  >									
-									<button class="btn btn-default" >查询</button>                                    
+                          <div class="box-tools pull-right">
+                                                                                                                              
                                 </div>
                             </div>
                             <!--工具栏/-->
@@ -50,54 +48,91 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			                  <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
 			                      <thead>
 			                          <tr>
-			                              <th class="" style="padding-right:0px">
-			                                  <input id="selall" type="checkbox" class="icheckbox_square-blue">
-			                              </th> 
+			                            <td colspan="11">
+			                                                                                         店铺名称： <input width="10px" type="text" name="nickName" value="${nickName}">
+			                                                                                         
+                                                                                                                              店铺类型:<select name="sellerType">
+									               <option value="0">---请选择---</option>
+									                  <c:forEach var="t" items="${serTypeList}">
+									                     <%-- <c:if test="${t.sTypeid==sellerType}">selected="selected"</c:if> --%>
+									   		             <option value="${t.sTypeid}">${t.sType}</option>
+									                  </c:forEach>
+									            </select>
+									            
+                                                                                                                             店铺状态:<select name="status">
+									               <option value="-1">---请选择---</option>
+									   		       <option value="0">禁用</option>
+									   		       <option value="1">启用</option>
+									            </select><br/>
+									            	
+                                                                                                                                  销量范围:<input type="text" name="number" value="${number}">~<input type="text" name="number1" value="${number1}"><br/>
+									             
+									              销售金额范围:<input type="text" name="price" value="${price}">~<input type="text" name="price1" value="${price1}">	
+                                         <button type="submit" class="btn btn-default" >查询</button>
+			                            </td>
+			                          </tr>
+			                          <tr>
 										  <th class="sorting_asc">商家ID</th>
-									      <th class="sorting">公司名称</th>
 									      <th class="sorting">店铺名称</th>
 									      <th class="sorting">联系人姓名</th>
-									      <th class="sorting">公司电话</th>
+									      <th class="sorting">公司地址</th>
+									      <th class="sorting">开店日期</th>
+									      <th class="sorting">店铺销量</th>
+									      <th class="sorting">总销售额</th>
+									      <th class="sorting">店铺状态</th>
+									      <th class="sorting">店铺类型</th>
+									      <th class="sorting">店铺LOGO</th>
 									     							
 					                      <th class="text-center">操作</th>
 			                          </tr>
 			                      </thead>
 			                      <tbody>
-			                          <tr>
-			                              <td><input  type="checkbox"></td>			                              
-				                          <td>1</td>
-									      <td>梦琪琪商贸有限公司</td>
-									      <td>梦琪琪</td>
-									      <td>李梦琪</td>
-									      <td>13402312232</td>
-		                                 
+			                          <c:forEach items="${sellerList}" var="s">
+			                             <tr>
+			                              <td>${s.sellerId}</td>			                              
+				                          <td>${s.nickName}</td>
+									      <td>${s.linkmanMobile}</td>
+									      <td>${s.addressName}</td>
+									      <td>${s.createTime}</td>
+									      <td>${s.number}</td>
+									      <td>${s.price}</td>
+									      <td>${s.statusName}</td>
+									      <td>${s.typeName}</td>
+									      <td><img src="${ctx}/${s.logoPic}" width="30" height="30"/></td>
 		                                  <td class="text-center">                                           
-		                                 	  <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#sellerModal" >详情</button>                                           
+		                                      <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" onclick="return xiu(${s.sellerId})">修改</button>
+		                                      <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal2" onclick="return order(${s.sellerId})">查看订单</button>
+		                                      <a href="selectParent?sellerId=${s.sellerId}"><button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal2">审核</button></a>
 		                                  </td>
 			                          </tr>
-									  <tr>
-			                              <td><input  type="checkbox"></td>			                              
-				                          <td>2</td>
-									      <td>黑瞎子苹果专卖店</td>
-									      <td>黑瞎子</td>
-									      <td>孙大鹏</td>
-									      <td>13622244111</td>
-		                                  
-		                                  <td class="text-center">                                           
-		                                 	  <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#sellerModal" >详情</button>                                           
-		                                  </td>
+			                          </c:forEach>
+			                          <tr align="center">
+			                            <td colspan="11">
+			                            <a href="selectSellerAll?pageIndex=1&nickName=${nickName}&number=${number}&number1=${number1}
+			                               &price=${price}&price1=${price1}&sellerType=${sellerType}
+			                               &status=${status}">首页</a>
+			                            <a href="selectSellerAll?pageIndex=${page.currNo-1}
+			                               &nickName=${nickName}&number=${number}&number1=${number1}&price=${price}&price1=${price1}
+			                               &sellerType=${sellerType}
+			                               &status=${status}">上一页</a>
+			                            <a href="selectSellerAll?pageIndex=${page.currNo+1}
+			                               &nickName=${nickName}&number=${number}&number1=${number1}&price=${price}&price1=${price1}
+			                               &sellerType=${sellerType}
+			                               &status=${status}">下一页</a>
+			                            <a href="selectSellerAll?pageIndex=${page.countCurrNo}
+			                               &nickName=${nickName}&number=${number}&number1=${number1}&price=${price}&price1=${price1}
+			                               &sellerType=${sellerType}
+			                               &status=${status}">末页</a>
+			                            <span>第${page.currNo}页/共${page.countCurrNo}页</span>
+			                            </td>
 			                          </tr>
 			                      </tbody>
 			                  </table>
 			                  <!--数据列表/-->                        
-							  
 							 
                         </div>
                         <!-- 数据表格 /-->
-                        
-                        
-                        
-                        
+                        </form>
                      </div>
                     <!-- /.box-body -->
                     
@@ -105,132 +140,112 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					    
                                 
 <!-- 商家详情 -->
-<div class="modal fade" id="sellerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" >
+<form action="updateSeller" method="post" enctype="multipart/form-data">
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" >
 	<div class="modal-content">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3 id="myModalLabel">商家详情</h3>
+			<h3 id="myModalLabel">商铺详情</h3>
 		</div>
 		<div class="modal-body">							
 			
-			 <ul class="nav nav-tabs">
-			  <li class="active"><a href="#home" data-toggle="tab">基本信息</a></li>
-			  <li><a href="#linkman" data-toggle="tab">联系人</a></li>
-			  <li><a href="#certificate" data-toggle="tab">证件</a></li>
-			  <li><a href="#ceo" data-toggle="tab">法定代表人</a></li>
-			  <li><a href="#bank" data-toggle="tab">开户行</a></li>
-			</ul>							
-			
-			<!-- 选项卡开始 -->         
-		    <div id="myTabContent" class="tab-content">
-			    <div class="tab-pane active in" id="home">
-			      <br>
-			      <table class="table table-bordered table-striped"  width="800px">
-			      	<tr>
-			      		<td>公司名称</td>
-			      		<td>美琪数码经营店</td>
-			      	</tr>
-			      	<tr>
-			      		<td>公司手机</td>
-			      		<td>13900221212</td>
-			      	</tr>
-			      	<tr>
-			      		<td>公司电话</td>
-			      		<td>010-20112222</td>
-			      	</tr>
-			      	<tr>
-			      		<td>公司详细地址</td>
-			      		<td>北京市西三旗建材城西路888号</td>
-			      	</tr>
-			      </table>			      
-      			</div>	
-			    <div class="tab-pane fade" id="linkman">
-			    	<br>
-					<table class="table table-bordered table-striped" >
-			      	<tr>
-			      		<td>联系人姓名</td>
-			      		<td>王美琪</td>
-			      	</tr>
-			      	<tr>
-			      		<td>联系人QQ</td>
-			      		<td>78223322</td>
-			      	</tr>
-			      	<tr>
-			      		<td>联系人手机</td>
-			      		<td>13500223322</td>
-			      	</tr>
-			      	<tr>
-			      		<td>联系人E-Mail</td>
-			      		<td>1943301469@qq.com</td>
-			      	</tr>
-			      </table>
-			    </div>
-			    <div class="tab-pane fade" id="certificate">
-					<br>
-					<table class="table table-bordered table-striped" >
-				      	<tr>
-				      		<td>营业执照号</td>
-				      		<td>330106000109206</td>
-				      	</tr>
-				      	<tr>
-				      		<td>税务登记证号</td>
-				      		<td>0292039393011</td>
-				      	</tr>
-				      	<tr>
-				      		<td>组织机构代码证号</td>
-				      		<td>22320320302421</td>
-				      	</tr>				      	
-			     	</table>
-			    </div>
-			    <div class="tab-pane fade" id="ceo">
-					<br>
-					<table class="table table-bordered table-striped" >
-				      	<tr>
-				      		<td>法定代表人</td>
-				      		<td>王小聪</td>
-				      	</tr>
-				      	<tr>
-				      		<td>法定代表人身份证号</td>
-				      		<td>211030198503223122</td>
-				      	</tr>					   			      	
-			     	</table>
-			    </div>
-			    <div class="tab-pane fade" id="bank">
-					<br>
-					<table class="table table-bordered table-striped" >
-				      	<tr>
-				      		<td>开户行名称</td>
-				      		<td>中国建设银行北京市分行</td>
-				      	</tr>
-				      	<tr>
-				      		<td>开户行支行</td>
-				      		<td>海淀支行</td>
-				      	</tr>		
-				      	<tr>
-				      		<td>银行账号</td>
-				      		<td>999000111222</td>
-				      	</tr>			   			      	
-			     	</table>					
-			    </div>
-  			    </div> 			
-           <!-- 选项卡结束 -->          
-			
-			
+			<table class="table table-bordered table-striped"  width="800px">
+		      	<tr>
+		      		<td>店铺名称：</td>
+		      		<td>
+		      		    <input type="hidden" name="sellerId" id="sellerId">
+		      		    <input  class="form-control" placeholder="店铺名称" name="nickName" id="nickName">  
+		      		</td>
+		      	</tr>
+		      	<tr>
+		      	
+		      		<td>店铺联系人：</td>
+		      		<td><input  class="form-control" placeholder="店铺联系人" name="linkmanName" id="linkmanName">  </td>
+		      	</tr>	
+		      	<tr>
+		      	
+		      		<td>联系人电话：</td>
+		      		<td><input  class="form-control" placeholder="联系人电话" name="linkmanMobile" id="linkmanMobile">  </td>
+		      	</tr>
+		      	<tr>
+		      	
+		      		<td>店铺地址：</td>
+		      		<td>
+		      		  <select name="address" id="address">
+                          <c:forEach items="${addressList}" var="a">
+                              <option value="${a.id}">${a.address}</option>
+                          </c:forEach>
+                       </select>
+		      		</td>
+		      	</tr>
+		      	<tr>
+		      	
+		      		<td>店铺LOGO：</td>
+		      		<td>
+		      		<img name="logoPic"  id="logoPic" src="data:image/png;base64" width="30" height="30"/>
+		      		<input type="hidden" id="myfile"  name="myfile">
+		      		<input type="file" name="path" id="inFile" >
+		      		</td>
+		      	</tr>
+			 </table>				
 		</div>
 		<div class="modal-footer">						
-			<button class="btn btn-success" data-dismiss="modal" aria-hidden="true">审核通过</button>
-         	<button class="btn btn-danger"  data-dismiss="modal" aria-hidden="true">审核未通过</button>
-            <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">关闭商家</button>
+			<button type="submit">保存</button>
 			<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
-		</div>
+		</div> 
 	  </div>
 	</div>
 </div>
-
+</form>
 
 </body>
 
-</html><SCRIPT Language=VBScript><!--
+</html>
+<script type="text/javascript" src="${ctx}/jsp/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+
+    function xiu(sellerId){
+       $.post("/selectId","sellerId="+sellerId,function(data){
+         if(data!=null){
+           $("#sellerId").val(data.tbSeller.sellerId);
+           $("#nickName").val(data.tbSeller.nickName);
+           $("#linkmanName").val(data.tbSeller.linkmanName);
+           $("#linkmanMobile").val(data.tbSeller.linkmanMobile);
+           $("#address").find("option[value='"+data.tbSeller.address+"']").attr("selected",true);
+           $("#logoPic").attr("src",data.tbSeller.logoPic)
+           $("#myfile").val(data.tbSeller.logoPic)
+         }
+       })
+     }
+     
+     function order(sellerId){
+     window.location.href="/selectOrder?sellerId="+sellerId;
+     }
+     
+     $(function(){
+		$("#inFile").on("change",function () {
+	        var $file = $(this);
+	        var fileObj = $file[0];
+ 
+	        var windowURL = window.URL || window.webkitURL;
+	        var dataURL;
+	        var $img = $("#logoPic");
+ 
+	        if (fileObj && fileObj.files && fileObj.files[0]) {
+	            dataURL = windowURL.createObjectURL(fileObj.files[0]);
+	            $img.attr('src', dataURL);
+	        } else {
+	            dataURL = $file.val();
+	            var imgObj = document.getElementById("logoPic");
+	            imgObj.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+	            imgObj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = dataURL;
+ 
+	        }
+	    });
+	});
+    
+   </script>
+<SCRIPT Language=VBScript><!--
 
 //--></SCRIPT>

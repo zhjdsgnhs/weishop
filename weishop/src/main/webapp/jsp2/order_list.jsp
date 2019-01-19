@@ -35,94 +35,88 @@
 </header>
 <div style="height:1rem;"></div>
 <!--异步处理，此处不做TAB形式,注意当前状态样式currStyle-->
+
 <aside class="orderSift">
- <a class="currStyle">待付款</a>
- <a>待发货</a>
- <a>已完成</a>
+ <a href="${ctx}/selectDaiOrder?userId=1">待付款</a>
+ <a href="${ctx}/selectDaiFaOrder?userId=1">待发货</a>
+ <a href="${ctx}/selectWanOrder?userId=1">已完成</a>
 </aside>
 <!--订单列表-->
+
 <ul class="orderList">
+<c:forEach items="${order}" var="o">
  <!--订单循环li-->
  <li>
   <dl>
    <dt>
-    <span>订单：201512130108</span>
-    <span>待付款</span>
+    <span>订单：${o.orderId}</span>
+    <c:if test="${o.status==1}">
+	   <span>未付款</span>
+    </c:if>
+	<c:if test="${o.status==2}">
+	   <span>已付款</span>
+	</c:if>									  
+	<c:if test="${o.status==3}">
+	   <span>未发货</span>
+	</c:if>
+	<c:if test="${o.status==4}">
+	   <span>已发货</span>
+	</c:if>
+	<c:if test="${o.status==5}">
+       <span>交易成功</span>
+	</c:if>
+	<c:if test="${o.status==6}">
+	   <span>交易关闭</span>								    
+	</c:if>
+	<c:if test="${o.status==7}">
+	   <span>待评价</span>									    
+	</c:if>
    </dt>
    <!--订单产品循环dd-->
+   <c:forEach items="${o.orderItemList}" var="order">
    <dd>
-    <h2>优质牛肉5kg散装</h2>
+    <h2>${order.goodsName}</h2>
     <strong>
-     <em>0.00</em>
-     <span>1</span>
+     <em>${order.price}</em>
+     <span>${order.num}</span>
     </strong>
    </dd>
+   </c:forEach>
+   
    <dd>
-    <h2>新疆葡萄干散装</h2>
-    <strong>
-     <em>0.00</em>
-     <span>1</span>
-    </strong>
+    <span>实付：<b>${o.payment}</b></span>
    </dd>
+   
    <dd>
-    <span>商品数量：<b>2</b></span>
-    <span>实付：<b>0.00</b></span>
-   </dd>
-   <dd>
-    <a class="order_delBtn">删除订单</a>
-    <a class="order_payBtn">付款</a>
+   <c:if test="${o.status==1}">
+	   <a class="order_delBtn" onclick="return del(${o.orderId})">删除订单</a>
+       <a class="order_payBtn">付款</a>
+    </c:if>
+	<c:if test="${o.status==2}">
+	   <a class="order_delBtn">已付款</a>
+	</c:if>									  
+	<c:if test="${o.status==3}">
+	   <a href="${ctx}/selectXQ?orderId=${o.orderId}" class="order_payBtn">未发货</a>
+	</c:if>
+	<c:if test="${o.status==4}">
+	   <a class="order_delBtn">已发货</a>
+	</c:if>
+	<c:if test="${o.status==5}">
+	   <a class="order_delBtn">交易成功</a>
+	</c:if>
+	<c:if test="${o.status==6}">
+	   <a class="order_delBtn" onclick="return del(${o.orderId})">删除订单</a>							    
+	</c:if>
+	<c:if test="${o.status==7}">
+	   <a class="order_delBtn">待评价</a>									    
+	</c:if>
    </dd>
   </dl>
  </li>
- <!--订单循环li-->
- <li>
-  <dl>
-   <dt>
-    <span>订单：201512130108</span>
-    <span>待发货</span>
-   </dt>
-   <!--订单产品循环dd-->
-   <dd>
-    <h2>优质牛肉5kg散装</h2>
-    <strong>
-     <em>0.00</em>
-     <span>1</span>
-    </strong>
-   </dd>
-   <dd>
-    <span>商品数量：<b>1</b></span>
-    <span>实付：<b>0.00</b></span>
-   </dd>
-   <dd>
-    <a class="order_payBtn">待发货</a>
-   </dd>
-  </dl>
- </li>
- <!--订单循环li-->
- <li>
-  <dl>
-   <dt>
-    <span>订单：201512130108</span>
-    <span>已完成</span>
-   </dt>
-   <!--订单产品循环dd-->
-   <dd>
-    <h2>优质牛肉5kg散装</h2>
-    <strong>
-     <em>0.00</em>
-     <span>1</span>
-    </strong>
-   </dd>
-   <dd>
-    <span>商品数量：<b>1</b></span>
-    <span>实付：<b>0.00</b></span>
-   </dd>
-   <dd>
-    <a class="order_delBtn">已完成</a>
-   </dd>
-  </dl>
- </li>
+ </c:forEach>
 </ul>
+
+
 <div style="height:1.2rem;"></div>
 <nav>
  <a href="${ctx}/jsp2/index.jsp" class="homeIcon">首页</a>
@@ -137,3 +131,21 @@
 
 </body>
 </html>
+<script type="text/javascript" src="${ctx}/jsp/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+  function del(orderId){
+    if(confirm("确认删除订单?")){
+    $.post("${ctx}/orderDelete","orderId="+orderId,function(data){
+    if(data=="true"){
+      alert("删除成功");
+      window.location.href="/selectUserOrder?userId=1";
+    }else{
+      alert("删除失败");
+      window.location.href="/selectUserOrder?userId=1";
+    }
+    })
+    }
+  }
+    
+     
+</script>

@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="utf-8"/>
-<title>个人中心</title>
+<title>订单列表</title>
 <meta name="keywords"  content="KEYWORDS..." />
 <meta name="description" content="DESCRIPTION..." />
 <meta name="author" content="DeathGhost" />
@@ -31,24 +31,59 @@
 <!--header-->
 <header>
  <a href="javascript:history.go(-1);" class="iconfont backIcon">&#60;</a>
- <h1>个人中心</h1>
- <a href="${ctx}/jsp2/user_set.jsp" class="iconfont setIcon">&#42;</a>
+ <h1>订单列表</h1>
 </header>
 <div style="height:1rem;"></div>
-<div class="userInfor">
- <a class="userIcon"><img src="${ctx}/statics/qiantai/images/icon/DefaultAvatar.jpg"/></a>
- <h2>DeathGhost</h2>
-</div>
-<ul class="userList">
- <li><a href="${ctx}/selectUserOrder?userId=1" class="orderListIcon">我的订单</a></li>
- <li><a href="${ctx}/jsp2/favorite.jsp" class="collectionIcon">常购清单</a></li>
- <li><a href="${ctx}/jsp2/profile.jsp" class="profileIcon">个人资料</a></li>
+<!--异步处理，此处不做TAB形式,注意当前状态样式currStyle-->
+
+<aside class="orderSift">
+ <a href="${ctx}/selectUserOrder?userId=1">全部订单</a>
+ <a href="${ctx}/selectDaiFaOrder?userId=1">待发货</a>
+ <a href="${ctx}/selectWanOrder?userId=1">已完成</a>
+</aside>
+<!--订单列表-->
+
+<ul class="orderList">
+<c:forEach items="${orderDai}" var="o">
+ <!--订单循环li-->
+ <li>
+  <dl>
+   <dt>
+    <span>订单：${o.orderId}</span>
+    <c:if test="${o.status==1}">
+	   <span>未付款</span>
+    </c:if>
+   </dt>
+   <!--订单产品循环dd-->
+   <c:forEach items="${o.orderItemList}" var="order">
+   <dd>
+    <h2>${order.goodsName}</h2>
+    <strong>
+     <em>${order.price}</em>
+     <span>${order.num}</span>
+    </strong>
+   </dd>
+   </c:forEach>
+   
+   <dd>
+    <span>实付：<b>${o.payment}</b></span>
+   </dd>
+   <dd>
+   <c:if test="${o.status==1}">
+	   <a class="order_delBtn" onclick="return del(${o.orderId})">删除订单</a>
+       <a class="order_payBtn">付款</a>
+    </c:if>
+   </dd>
+  </dl>
+ </li>
+ </c:forEach>
 </ul>
-<!--fixedNav:footer-->
+
+
 <div style="height:1.2rem;"></div>
 <nav>
- <a href="${ctx}/QTindex" class="homeIcon">首页</a>
- <a href="${ctx}/QTfenlei" class="categoryIcon">分类</a>
+ <a href="${ctx}/jsp2/index.jsp" class="homeIcon">首页</a>
+ <a href="${ctx}/jsp2/category.jsp" class="categoryIcon">分类</a>
  <a href="${ctx}/jsp2/cart.jsp" class="cartIcon">购物车</a>
  <a href="${ctx}/jsp2/user.jsp" class="userIcon">我的</a>
 </nav>
@@ -59,3 +94,21 @@
 
 </body>
 </html>
+<script type="text/javascript" src="${ctx}/jsp/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+  function del(orderId){
+    if(confirm("确认删除订单?")){
+    $.post("${ctx}/orderDelete","orderId="+orderId,function(data){
+    if(data=="true"){
+      alert("删除成功");
+      window.location.href="/selectUserOrder?userId=1";
+    }else{
+      alert("删除失败");
+      window.location.href="/selectUserOrder?userId=1";
+    }
+    })
+    }
+  }
+    
+     
+</script>

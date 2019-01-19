@@ -32,11 +32,12 @@ public class TbOrderItem implements Serializable {
      * SPU_ID
      */
     private Long goodsId;
+    private String goodsName;
 
     /**
      * 订单id
      */
-    private Long orderId;
+    private Integer orderId;
 
     /**
      * 商品标题
@@ -89,11 +90,21 @@ public class TbOrderItem implements Serializable {
 		this.goodsId = goodsId;
 	}
 
-	public Long getOrderId() {
+	
+	public String getGoodsName() {
+		return goodsName;
+	}
+
+	public void setGoodsName(String goodsName) {
+		this.goodsName = goodsName;
+	}
+
+
+	public Integer getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderId(Long orderId) {
+	public void setOrderId(Integer orderId) {
 		this.orderId = orderId;
 	}
 
