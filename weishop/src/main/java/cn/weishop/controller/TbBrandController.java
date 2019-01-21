@@ -51,7 +51,7 @@ public class TbBrandController {
 	
 	@RequestMapping("index")
 	public String lala(){
-		return "backend/admin/index";
+		return "jsp/backend/admin/index";
 		
 		
 	}
@@ -78,7 +78,7 @@ public class TbBrandController {
       	request.setAttribute("pageNum", pagenum);
 		request.setAttribute("name", name);
 		request.setAttribute("num",num);
-    	return "backend/admin/brand";	  	    
+    	return "jsp/backend/admin/brand";	  	    
 	}
 	
 	

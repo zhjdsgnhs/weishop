@@ -54,6 +54,8 @@ $(document).ready(function(){
   $(".plus").click(function(){
 	  var currNum=$(this).siblings(".number");
 	  currNum.val(parseInt(currNum.val())+1);
+	  
+	  
 	  });
   //delBtn
   $(".delBtn").click(function(){
@@ -83,17 +85,18 @@ $(document).ready(function(){
   <label><input type="checkbox"/>全选</label>
   <a class="edit">编辑</a>
  </dt>
+  <c:forEach  items="${list}" var="list">
  <dd>
   <input type="checkbox"/>
-  <a href="${ctx}/jsp2/product.jsp" class="goodsPic"><img src="${ctx}/statics/qiantai/upload/goods008.jpg"/></a>
+  <a href="${ctx}/jsp2/product.jsp" class="goodsPic"><img src="${ctx}/statics/qiantai/upload/${list.small_pic}"/></a>
   <div class="goodsInfor">
    <h2>
-    <a href="${ctx}/jsp2/product.jsp">IBOH艾铂赫煎锅H863</a>
-    <span>1</span>
+    <a href="${ctx}/jsp2/product.jsp">${list.goods_name}</a>
+    <span class="number">${list.num}</span>
    </h2>
    <div class="priceArea">
-    <strong>0.00</strong>
-    <del>0.00</del>
+    <strong>${list.price}</strong>
+    <del>${list.price}</del>
    </div>
    <div class="numberWidget">
     <input type="button" value="-" class="minus"/>
@@ -103,51 +106,13 @@ $(document).ready(function(){
   </div>
   <a class="delBtn">删除</a>
  </dd>
- <dd>
-  <input type="checkbox"/>
-  <a href="${ctx}/jsp2/product.jsp" class="goodsPic"><img src="${ctx}/statics/qiantai/upload/goods009.jpg"/></a>
-  <div class="goodsInfor">
-   <h2>
-    <a href="${ctx}/jsp2/product.jsp">IBOH艾铂赫煎锅H863</a>
-    <span>1</span>
-   </h2>
-   <div class="priceArea">
-    <strong>0.00</strong>
-    <del>0.00</del>
-   </div>
-   <div class="numberWidget">
-    <input type="button" value="-" class="minus"/>
-    <input type="text" value="1" disabled class="number"/>
-    <input type="button" value="+" class="plus"/>
-   </div>
-  </div>
-  <a class="delBtn">删除</a>
- </dd>
- <dd>
-  <input type="checkbox"/>
-  <a href="${ctx}/jsp2/product.jsp" class="goodsPic"><img src="${ctx}/statics/qiantai/upload/goods007.jpg"/></a>
-  <div class="goodsInfor">
-   <h2>
-    <a href="${ctx}/jsp2/product.jsp">IBOH艾铂赫煎锅H863</a>
-    <span>1</span>
-   </h2>
-   <div class="priceArea">
-    <strong>0.00</strong>
-    <del>0.00</del>
-   </div>
-   <div class="numberWidget">
-    <input type="button" value="-" class="minus"/>
-    <input type="text" value="1" disabled  class="number"/>
-    <input type="button" value="+" class="plus"/>
-   </div>
-  </div>
-  <a class="delBtn">删除</a>
- </dd>
+  </c:forEach>
+
 </dl>
 <!--bottom nav-->
 <div style="height:1rem;"></div>
 <aside class="btmNav">
- <a>合计：￥0.00</a>
+ <a>合计：￥${price}</a>
  <a href="${ctx}/jsp2/confirm_order.jsp" style="background:#64ab5b;color:white;text-shadow:none;">立即下单</a>
 </aside>
 </body>

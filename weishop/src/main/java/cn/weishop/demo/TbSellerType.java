@@ -39,7 +39,7 @@ public class TbSellerType implements Serializable {
      * 0.禁用 1.启用
      */
     private Integer status;
-    private String statusName;
+    
 
 
     private String sRemark;
@@ -72,30 +72,7 @@ public class TbSellerType implements Serializable {
 		return status;
 	}
 
-	public void setStatus(Integer status) {
-		this.status = status;
-		switch (this.status) {
-		case 0:
-			statusName="禁用";
-			break;
-		case 1:
-			statusName="启用";
-			break;
-		default:
-			break;
-		}
 
-	}
-	
-	
-
-	public String getStatusName() {
-		return statusName;
-	}
-
-	public void setStatusName(String statusName) {
-		this.statusName = statusName;
-	}
 
 	public String getsRemark() {
 		return sRemark;

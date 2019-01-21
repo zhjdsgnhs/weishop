@@ -111,7 +111,7 @@ public class TbOrderController {
 			  request.setAttribute("payment2", payment2);
 		      request.setAttribute("username", username);
 		      request.setAttribute("message", message);
-		return "backend/admin/order";
+		return "jsp/backend/admin/order";
 	}
 	
 	@RequestMapping("update")
@@ -120,7 +120,7 @@ public class TbOrderController {
 			@RequestParam(value="id",required=false,defaultValue="0") Integer id
 			){
 	      int  count =	 ITbOrderService.updateStatus(status,id);
-		 if(count>0){
+		 if(count>0){ 
 			 
 			 return "true";
 		 }
@@ -139,7 +139,7 @@ public class TbOrderController {
 		}
 		request.setAttribute("username",userid);
 		request.setAttribute("list",orderList);
-		return "backend/admin/order_details";
+		return "jsp/backend/admin/order_details";
 	}
 	
 	@RequestMapping("daochu")
@@ -242,7 +242,7 @@ public class TbOrderController {
                 		row1.createCell(n).setCellValue("待发货");break;   
                 	}
                 	
-                case 5: //下单时间
+                
                 	          LocalDateTime time = LocalDateTime.now();
                 	          String localTime = df.format(tborder.getCreateTime());               	        
                     row1.createCell(n).setCellValue(localTime);break;

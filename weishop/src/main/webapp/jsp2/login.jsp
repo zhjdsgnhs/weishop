@@ -62,7 +62,7 @@ $(document).ready(function(){
 <nav>
  <a href="${ctx}/QTindex" class="homeIcon">首页</a>
  <a href="${ctx}/QTfenlei" class="categoryIcon">分类</a>
- <a href="${ctx}/jsp2/cart.jsp" class="cartIcon">购物车</a>
+ <a href="${ctx}/gwc/select" class="cartIcon">购物车</a>
  <a href="${ctx}/jsp2/user.jsp" class="userIcon">我的</a>
 </nav>
 <script>
