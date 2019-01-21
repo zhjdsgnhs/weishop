@@ -1,6 +1,8 @@
 package cn.weishop.controller;
 
 
+
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import cn.weishop.demo.TbUser;
 import cn.weishop.service.ITbUserService;
+
 
 /**
  * <p>
@@ -21,39 +24,35 @@ import cn.weishop.service.ITbUserService;
 @Controller
 /*@RequestMapping("/tb-user")*/
 public class TbUserController {
+	
 	@Autowired
-    private ITbUserService ITbUserService;
+	private ITbUserService iTbUserService;
 	
-	@RequestMapping("/Dlogin")
-    public String bb(){
-    	return "jsp2/login";
-    }
+//	@RequestMapping("/login")
+//    public String login(){
+//    	return "backend/admin/index";
+//    }
 	
-	
-	
-	
-	@RequestMapping("/logins")
-	public String logins(@RequestParam(value="username",required=false)String username,@RequestParam(value="password",required=false)String password,Model model){
+	@RequestMapping("tbUserLogin")
+	public String tbUserLogin(@RequestParam(value="username",required=false) String username,
+			@RequestParam(value="password",required=false) String password,
+			Model model,HttpSession session){
 		try {
-			TbUser tbUser = ITbUserService.login(username, password);
-			if(tbUser!=null){
-				if(tbUser.getUsername()==username && tbUser.getPassword()==password){
-					return "qiantai/index.html";
-				}else{
-					model.addAttribute("用户名密码不正确","falgError");
-					return "seller/shoplogin";
-					
-				}
-				
+			TbUser tbUser = iTbUserService.tbUserLogin(username, password);
+			if (tbUser!=null) {
+				session.setAttribute("tbUser", tbUser);
+				model.addAttribute("tbUser", tbUser);
+				return "backend/admin/index";
 			}else{
-				return "seller/shoplogin";
+				model.addAttribute("error", "账号或密码不正确");
+				return "backend/login";
 			}
-				
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
+		
 	}
-    
+
 	
 }

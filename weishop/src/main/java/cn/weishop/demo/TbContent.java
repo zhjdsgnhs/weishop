@@ -2,6 +2,9 @@ package cn.weishop.demo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
@@ -25,12 +28,14 @@ public class TbContent implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "id", type = IdType.AUTO)
-    private Long id;
+    private Integer id;
 
     /**
      * 内容类目ID
      */
-    private Long categoryId;
+    private Integer categoryId;
+    
+    private String categoryName;
 
     /**
      * 内容标题
@@ -51,8 +56,18 @@ public class TbContent implements Serializable {
      * 排序
      */
     private Integer sortOrder;
+   
+    
+    private List<TbContentCategory> category;
+    public List<TbContentCategory> getCategory() {
+		return category;
+	}
 
-    /**
+	public void setCategory(List<TbContentCategory> category) {
+		this.category = category;
+	}
+
+	/**
      * 广告名
      */
     private String name;
@@ -63,20 +78,28 @@ public class TbContent implements Serializable {
     @TableField("updateTime")
     private LocalDate updateTime;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public Long getCategoryId() {
+	public Integer getCategoryId() {
 		return categoryId;
 	}
 
-	public void setCategoryId(Long categoryId) {
+	public void setCategoryId(Integer categoryId) {
 		this.categoryId = categoryId;
+	}
+	
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 
 	public String getTitle() {

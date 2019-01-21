@@ -1,9 +1,10 @@
 package cn.weishop.demo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import java.time.LocalDate;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+import java.util.Date;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -37,19 +38,19 @@ public class TbTheme implements Serializable {
     private String picture;
 
     /**
-     * 是否启用
+     * 是否有效
      */
     private String status;
 
     /**
-     * 启动时间
+     * 启始时间
      */
-    private LocalDate createTime;
+    private Date createTime;
 
     /**
      * 截止时间
      */
-    private LocalDate closeTime;
+    private Date closeTime;
 
     /**
      * 操作人
@@ -59,7 +60,17 @@ public class TbTheme implements Serializable {
     /**
      * 操作时间
      */
-    private LocalDate updateTime;
+    private Date updateTime;
+    
+    private Integer userid;
+
+	public Integer getUserid() {
+		return userid;
+	}
+
+	public void setUserid(Integer userid) {
+		this.userid = userid;
+	}
 
 	public Integer getThemeid() {
 		return themeid;
@@ -93,19 +104,19 @@ public class TbTheme implements Serializable {
 		this.status = status;
 	}
 
-	public LocalDate getCreateTime() {
+	public Date getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(LocalDate createTime) {
+	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
 
-	public LocalDate getCloseTime() {
+	public Date getCloseTime() {
 		return closeTime;
 	}
 
-	public void setCloseTime(LocalDate closeTime) {
+	public void setCloseTime(Date closeTime) {
 		this.closeTime = closeTime;
 	}
 
@@ -117,11 +128,11 @@ public class TbTheme implements Serializable {
 		this.person = person;
 	}
 
-	public LocalDate getUpdateTime() {
+	public Date getUpdateTime() {
 		return updateTime;
 	}
 
-	public void setUpdateTime(LocalDate updateTime) {
+	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
 

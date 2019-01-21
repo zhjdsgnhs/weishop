@@ -40,7 +40,7 @@
  <h2>DeathGhost</h2>
 </div>
 <ul class="userList">
- <li><a href="${ctx}/jsp2/order_list.jsp" class="orderListIcon">我的订单</a></li>
+ <li><a href="${ctx}/selectUserOrder?userId=1" class="orderListIcon">我的订单</a></li>
  <li><a href="${ctx}/jsp2/favorite.jsp" class="collectionIcon">常购清单</a></li>
  <li><a href="${ctx}/jsp2/profile.jsp" class="profileIcon">个人资料</a></li>
 </ul>

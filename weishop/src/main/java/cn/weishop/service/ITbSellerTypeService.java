@@ -18,8 +18,12 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2018-12-28
  */
 public interface ITbSellerTypeService extends  IService<TbSellerType>{
+
+
 	public List<TbSellerType> selectSeller();
 	public boolean updateSellerType(TbSellerType tbSellerType);
 	public TbSellerType selectSellerId(int sTypeid);
+	public boolean sellerQi(int sTypeid);
+	public boolean sellerJin(int sTypeid);
 
 }

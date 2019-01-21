@@ -16,17 +16,18 @@ import lombok.experimental.Accessors;
  * @author jeddden
  * @since 2018-12-28
  */
-@Data
+/*@Data
 @EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
-public class TbOrder implements Serializable {
+@Accessors(chain = true)*/
+public class TbOrder{
 
-    private static final long serialVersionUID = 1L;
+    /*private static final long serialVersionUID = 1L;*/
 
     /**
      * 订单id
      */
-    private Long orderId;
+
+    private Integer orderId;
    
     private String username;
     
@@ -50,13 +51,6 @@ public class TbOrder implements Serializable {
 		this.name = name;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
 
 	private Integer cost;
     public Integer getCost() {
@@ -73,9 +67,10 @@ public class TbOrder implements Serializable {
     private Double payment;
 
     /**
-     * 支付类型，1、在线支付，2、货到付款
+     * 支付类型，1、微信支付，2、货到付款
      */
-    private String paymentType;
+    private int paymentType;
+   
 
     /**
      * 邮费。精确到2位小数;单位:元。如:200.07，表示:200元7分
@@ -85,7 +80,8 @@ public class TbOrder implements Serializable {
     /**
      * 状态：1、未付款，2、已付款，3、未发货，4、已发货，5、交易成功，6、交易关闭,7、待评价
      */
-    private String status;
+    private int status;
+    
 
     /**
      * 订单创建时间
@@ -130,7 +126,7 @@ public class TbOrder implements Serializable {
     /**
      * 用户id
      */
-    private String userId;
+    private int userId;
 
     /**
      * 买家留言
@@ -181,8 +177,50 @@ public class TbOrder implements Serializable {
      * 订单来源：1:app端，2：pc端，3：M端，4：微信端，5：手机qq端
      */
     private String sourceType;
+    
+    private List<TbOrderItem> orderItemList;
+    
+   
+    
+    public String phone;
+    
+    public String addressName;
+    
+    
 
-    /**
+    public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getAddressName() {
+		return addressName;
+	}
+
+	public void setAddressName(String addressName) {
+		this.addressName = addressName;
+	}
+
+	public List<TbOrderItem> getOrderItemList() {
+		return orderItemList;
+	}
+
+	public void setOrderItemList(List<TbOrderItem> orderItemList) {
+		this.orderItemList = orderItemList;
+	}
+
+	/**
      * 商家ID
      */
     private Integer sellerId;
@@ -197,11 +235,13 @@ public class TbOrder implements Serializable {
 		TbOrderItemList = tbOrderItemList;
 	}
 
-	public Long getOrderId() {
+	
+
+	public Integer getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderId(Long orderId) {
+	public void setOrderId(Integer orderId) {
 		this.orderId = orderId;
 	}
 
@@ -213,11 +253,15 @@ public class TbOrder implements Serializable {
 		this.payment = payment;
 	}
 
-	public String getPaymentType() {
+	
+
+	
+
+	public int getPaymentType() {
 		return paymentType;
 	}
 
-	public void setPaymentType(String paymentType) {
+	public void setPaymentType(int paymentType) {
 		this.paymentType = paymentType;
 	}
 
@@ -229,13 +273,18 @@ public class TbOrder implements Serializable {
 		this.postFee = postFee;
 	}
 
-	public String getStatus() {
+	
+
+	public int getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(int status) {
 		this.status = status;
+		
 	}
+
+	
 
 	public LocalDateTime getCreateTime() {
 		return createTime;
@@ -301,11 +350,11 @@ public class TbOrder implements Serializable {
 		this.shoptype = shoptype;
 	}
 
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 

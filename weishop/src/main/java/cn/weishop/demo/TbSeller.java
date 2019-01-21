@@ -3,6 +3,7 @@ package cn.weishop.demo;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -45,12 +46,13 @@ public class TbSeller implements Serializable {
     private String telephone;
 
     /**
-     * 状态  1.启用 2.禁用
+     * 状态  1.启用0.禁用
      */
-    private String status;
+    private int status;
+    private String statusName;
 
     /**
-     * 联系人微信
+     * 联系人
      */
     private String linkmanName;
 
@@ -68,6 +70,8 @@ public class TbSeller implements Serializable {
      * 公司地址
      */
     private Integer address;
+    
+    private String addressName;
 
     /**
      * 公司LOGO图
@@ -93,6 +97,7 @@ public class TbSeller implements Serializable {
      * 店铺类型
      */
     private Integer sellerType;
+    private String typeName;
 
     /**
      * 购买总量
@@ -110,6 +115,18 @@ public class TbSeller implements Serializable {
      * 分级
      */
     private Integer parentId;
+    
+    private List<TbSeller> sList;//查询子店铺
+    
+   
+	
+	public List<TbSeller> getsList() {
+		return sList;
+	}
+
+	public void setsList(List<TbSeller> sList) {
+		this.sList = sList;
+	}
 
 	public Integer getSellerId() {
 		return sellerId;
@@ -143,12 +160,31 @@ public class TbSeller implements Serializable {
 		this.telephone = telephone;
 	}
 
-	public String getStatus() {
+	public int getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(int status) {
 		this.status = status;
+		switch (this.status) {
+		case 0:
+			statusName="禁用";
+			break;
+		case 1:
+			statusName="启用";
+			break;
+		default:
+			break;
+		}
+	}
+	
+
+	public String getStatusName() {
+		return statusName;
+	}
+
+	public void setStatusName(String statusName) {
+		this.statusName = statusName;
 	}
 
 	public String getLinkmanName() {
@@ -254,6 +290,23 @@ public class TbSeller implements Serializable {
 	public void setParentId(Integer parentId) {
 		this.parentId = parentId;
 	}
+
+	public String getAddressName() {
+		return addressName;
+	}
+
+	public void setAddressName(String addressName) {
+		this.addressName = addressName;
+	}
+
+	public String getTypeName() {
+		return typeName;
+	}
+
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
+	}
+	
 
 
 }

@@ -1,10 +1,10 @@
 package cn.weishop.demo;
 
 public class Page {
-	   private int currNo=1;
-	   private int currSize=6;
-	   private int countCurrNo;
-	   private int countCurrSize;
+	   private int currNo=1;//当前页面
+	   private int currSize=4;//页面条数
+	   private int countCurrNo;//总页码
+	   private int countCurrSize;//总数据
 	public int getCurrNo() {
 		return currNo;
 	}

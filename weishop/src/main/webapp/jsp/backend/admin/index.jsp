@@ -332,7 +332,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				                </a>
 				            </li>
 				            <li id="admin-login">
-				                <a href="" target="iframe">
+				                <a href="selectSellerAll" target="iframe">
 				                    <i class="fa fa-circle-o"></i>商家管理
 				                </a>
 				            </li>

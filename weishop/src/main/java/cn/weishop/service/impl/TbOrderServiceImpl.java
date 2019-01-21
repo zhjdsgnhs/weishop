@@ -2,7 +2,9 @@ package cn.weishop.service.impl;
 
 import cn.weishop.demo.TbOrder;
 import cn.weishop.demo.TbOrderItem;
+import cn.weishop.demo.TbSellerType;
 import cn.weishop.mapper.TbOrderMapper;
+import cn.weishop.mapper.TbSellerTypeMapper;
 import cn.weishop.service.ITbOrderService;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -23,6 +25,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class TbOrderServiceImpl extends ServiceImpl<TbOrderMapper, TbOrder> implements ITbOrderService {
+
 
 	 @Autowired
 	 TbOrderMapper TbOrderMapper;
@@ -56,5 +59,66 @@ public class TbOrderServiceImpl extends ServiceImpl<TbOrderMapper, TbOrder> impl
 		// TODO Auto-generated method stub
 		return TbOrderMapper.selectorderd(wrapper);
 	}
+
+
+	
+	@Override
+	public List<TbOrder> selectUserOrder(Integer userId) {
+		try {
+			return TbOrderMapper.selectUserOrder(userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	@Override
+	public List<TbOrder> selectDaiOrder(Integer userId) {
+		try {
+			return TbOrderMapper.selectDaiOrder(userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	@Override
+	public List<TbOrder> selectDaiFaOrder(Integer userId) {
+		try {
+			return TbOrderMapper.selectDaiFaOrder(userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	@Override
+	public List<TbOrder> selectWanOrder(Integer userId) {
+		try {
+			return TbOrderMapper.selectWanOrder(userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	@Override
+	public List<TbOrder> selectXQ(Integer orderId) {
+		try {
+			return TbOrderMapper.selectXQ(orderId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	@Override
+	public boolean orderDelete(Integer orderId) {
+		try {
+			int count=TbOrderMapper.orderDelete(orderId);
+			if(count>0){
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 
 }

@@ -1,3 +1,4 @@
+
 package cn.weishop.service.impl;
 
 import cn.weishop.demo.TbOrder;
@@ -53,5 +54,31 @@ public class TbSellerTypeServiceImpl extends ServiceImpl<TbSellerTypeMapper, TbS
 	}
 
 
+	@Override
+	public boolean sellerQi(int sTypeid) {
+		try {
+			int count = tbSellerTypeMapper.sellerQi(sTypeid);
+			if(count>0){
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean sellerJin(int sTypeid) {
+		try {
+			int count = tbSellerTypeMapper.sellerJin(sTypeid);
+			if(count>0){
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 
 }
+

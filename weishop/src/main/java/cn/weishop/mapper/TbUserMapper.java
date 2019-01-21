@@ -1,6 +1,11 @@
 package cn.weishop.mapper;
+
 import cn.weishop.demo.TbUser;
+
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
  * <p>
@@ -10,7 +15,9 @@ import org.apache.ibatis.annotations.Param;
  * @author jeddden
  * @since 2018-12-28
  */
-public interface TbUserMapper{
-   TbUser login(@Param("username") String username,@Param("password") String password);
-   
+public interface TbUserMapper extends BaseMapper<TbUser> {
+	@Select("<script>SELECT * from tb_user where username=#{username} "
+			+ "and password=#{password}</script>")
+	TbUser tbUserLogin(@Param("username") String username,@Param("password") String password);
+
 }
